@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>ReachRich Projects test 123</h1>
+	<h1>ReachRich Projects</h1>
 </body>
 </html>
