@@ -1,2 +1,0 @@
-# ReachRich
-JSL Team Project
