@@ -1,4 +1,4 @@
-package com.ReachRich.mapper;
+package com.ReachRich.mapper.UM;
 
 import org.apache.ibatis.annotations.Mapper;
 
