@@ -61,11 +61,10 @@
 			<artifactId>jstl</artifactId>
 		</dependency>
 		
-		<!-- gmail -->
+		<!-- mysql -->
 		<dependency>
-		    <groupId>javax.mail</groupId>
-		    <artifactId>mail</artifactId>
-		    <version>1.4.7</version>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
 	</dependencies>
 
