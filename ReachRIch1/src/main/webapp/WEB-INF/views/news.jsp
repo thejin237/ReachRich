@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import = "java.*,com.ReachRich.*"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,6 +9,6 @@
 <title>Insert title here</title>
 </head>
 <body>
- <h1>11</h1>
+
 </body>
 </html>
