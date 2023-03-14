@@ -1,19 +1,21 @@
 package com.reachrich.Controller;
 
 import java.io.IOException;
+import java.util.Map;
 import java.util.regex.Pattern;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.reachrich.Service.NewUserSerImpl;
 import com.reachrich.util.GmailConfirm;
@@ -32,14 +34,14 @@ public class AdminUserController {
 	
 	
 	@PostMapping("idCheck") //int 반환은 불가능
-	public String idCheck(@RequestParam("userid") String userid){
-		int result = service.userIdCheck(userid);
-		if(userid.length() >= 5) {
-			if(Pattern.matches("ADMIN", userid.toUpperCase().substring(0,5))) {
-				result = -1;
-			}
+	public @ResponseBody int idCheck(@RequestParam("userid") String userid){
+		int result = 0;
+		if(userid == "") {
+			result = -1;
+		}else {			
+			result = service.userIdCheck(userid);
 		}
-		return String.valueOf(result);
+		return result;
 	}
 
 	@GetMapping("em_check")

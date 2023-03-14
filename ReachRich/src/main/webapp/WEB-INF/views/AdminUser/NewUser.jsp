@@ -12,26 +12,22 @@
 	$(function(){
 		//아이디 중복 체크 JSON 배워야한다?
 		$('#btn1').click(function() {
-			alert("버튼확인");
 			var userid= user.user_id.value;
-			alert("아이디는 " + userid);//테스트
 			$.ajax({
-				url:'idCheck', //서블릿 이름
+				url:'idCheck', //서블릿(컨트롤러) 이름
 				type:'post',
 				data:{'userid':userid},
 				success:function(result){//성공시
-					alert(result.value);
 					if(result == 0){
 						id_c.innerHTML='사용가능한 아이디입니다';
-						$('#user_pass').focus();
+						user.user_pass.focus();
 					}else if(result == 1){
 						id_c.innerHTML='중복된 아이디입니다';
-						$('#user_id').val('');
-						$('#user_id').focus();//포커스 이동
+						user.user_id.value = "";
+						user.user_id.focus();
 					}else{
-						id_c.innerHTML='?'; //아이디 admin포함일시 해당아이디 사용불가능
-						$('#user_id').val('');
-						$('#user_id').focus();						
+						id_c.innerHTML='아이디를 작성해주세요';
+						user.user_id.focus();
 					}
 				},
 				error:function(error){//실패시
@@ -42,15 +38,13 @@
 		
 		//비번체크
 		$("input[name='repasswd']").on("change", function(){
-			var passwd = $('#passwd').val();
-			var repasswd = $('#repasswd').val();
-			if(passwd == repasswd){
-				repass_c.innerHTML="확인되었습니다.";
-				$('#tel').focus();
+			if(user.user_pass.value == user.repasswd.value){
+				pw_c.innerHTML="";
+				user.user_phone1.focus();
 			}else{
-				repass_c.innerHTML="비밀번호를 확인해주세요.";
-				$('#repasswd').val('');
-				$('#repasswd').focus();
+				pw_c.innerHTML="비밀번호를 확인해주세요";
+				user.repasswd.value = "";
+				user.repasswd.focus();
 			}
 		});
 	});
@@ -95,11 +89,15 @@
 		<table>
 			<tr>
 				<th>유저아이디</th>
-				<td><input type="text" name="user_id"> <input type="button" value="중복확인" id="btn1"><b id="id_c"></b></td>
+				<td><input type="text" name="user_id"> <input type="button" value="중복확인" id="btn1"> <font id="id_c" color="blue"></font></td>
 			</tr>
 			<tr>
 				<th>비밀번호</th>
-				<td><input type="text" name="user_pass"></td>
+				<td><input type="password" name="user_pass"></td>
+			</tr>
+			<tr>
+				<th>비밀번호확인</th>
+				<td><input type="password" name="repasswd"> <font id="pw_c" color="red"></font></td>
 			</tr>
 			<tr>
 				<th>핸드폰</th>
@@ -118,8 +116,9 @@
 						<option value="gmail.com">gmail.com
 						<option value="naver.com">naver.com
 						<option value="daum.net">daum.net
+						<option value="nate.com">nate.com
 					</select>
-					<input type="button" value="이메일 인증" onclick="chk_em()"> <b id="em_c">인증이 필요합니다</b>
+					<input type="button" value="이메일 인증" onclick="chk_em()"> <font id="em_c" color="red">인증이 필요합니다</font>
 				</td>
 			</tr>
 			<tr>
