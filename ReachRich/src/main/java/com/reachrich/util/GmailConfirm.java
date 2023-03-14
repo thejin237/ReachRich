@@ -24,7 +24,7 @@ public class GmailConfirm {
 		String fromName="관리자"; // 보내는 이름 설정
 		String from="Admin"; // 보내는 사람(구글계정)
 		String authNum=GmailConfirm.authNum(); // 인증번호 위한 난수 발생부분
-		String content="인증번호 ["+authNum+"]"; // 이메일 내용 설정
+		String content = " 안녕하세요 ReachRich입니다. <br>" + "인증번호 : ["+authNum+"] "; // 이메일 내용 설정
 		
         // SMTP 이용하기 위해 설정해주는 설정값들
 		try{

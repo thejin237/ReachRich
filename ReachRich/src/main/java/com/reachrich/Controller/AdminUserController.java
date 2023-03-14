@@ -45,7 +45,7 @@ public class AdminUserController {
 	}
 
 	@GetMapping("em_check")
-	public void em_check(HttpServletRequest request, Model model) throws ServletException, IOException {
+	public void em_check(HttpServletRequest request, Model model){
 		GmailConfirm gc = GmailConfirm.getInstance();
 		String email = request.getParameter("email1") + "@" + request.getParameter("email2");
 		String authNum = gc.connectEmail(email);
