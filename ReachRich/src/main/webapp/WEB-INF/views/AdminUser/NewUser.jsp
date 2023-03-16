@@ -11,7 +11,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form method="post" name="user" action="NewUser">
+	<form method="post" name="user" action="NewUser_pro">
 		<table>
 			<tr>
 				<th>유저아이디</th>

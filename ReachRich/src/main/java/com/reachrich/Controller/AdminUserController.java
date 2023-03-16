@@ -24,7 +24,7 @@ public class AdminUserController {
 	
 	@GetMapping("NewUser")
 	public void NewUser() {}
-
+	
 	@PostMapping("NewUser")
 	public String NewUserPro(UserDTO dto, HttpServletRequest request){
 		int row = service.NewUser(dto, request);
