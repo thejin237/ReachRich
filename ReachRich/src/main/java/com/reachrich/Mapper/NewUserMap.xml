@@ -4,4 +4,9 @@
 	<select id="userIdCheck" resultType="int">
 		select count(*) from tbl_user where user_id = #{userid}
 	</select>
+	
+	<insert id="NewUser" parameterType="UserDTO">
+		insert into tbl_user(user_id, user_pass, user_phone1, user_phone2, user_phone3, user_email, user_grade, user_wcnt, interest, joindate)
+		 values(#{user_id},#{user_pass},#{user_phone1},#{user_phone2},#{user_phone3},#{user_email},#{user_grade},#{user_wcnt},#{interest},sysdate())
+	</insert>
 </mapper>
