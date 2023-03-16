@@ -5,6 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript">
+	location.href="/index.do";
+</script>
 </head>
 <body>
 	<h1>ReachRich Projects test</h1>

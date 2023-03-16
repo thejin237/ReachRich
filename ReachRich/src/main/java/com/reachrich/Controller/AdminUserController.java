@@ -23,17 +23,15 @@ public class AdminUserController {
 	private NewUserSerImpl service;
 	
 	@GetMapping("NewUser")
-	public void NewUser() {
-		
-	}
+	public void NewUser() {}
 
 	@PostMapping("NewUser")
 	public String NewUserPro(UserDTO dto, HttpServletRequest request){
 		int row = service.NewUser(dto, request);
 		if(row == 1) {
-			return "redirect:/index";			
+			return "/index";			
 		}else {
-			return "history.back";
+			return "";
 		}
 	}
 	

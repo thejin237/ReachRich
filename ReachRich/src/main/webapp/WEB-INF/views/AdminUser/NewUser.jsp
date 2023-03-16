@@ -195,6 +195,7 @@
 			alert("이메일이 인증되지 않았습니다");
 			return;
 		}
+		user.submit();
 	}
 	function change_em(){
 		if(user.email3.value != ""){
