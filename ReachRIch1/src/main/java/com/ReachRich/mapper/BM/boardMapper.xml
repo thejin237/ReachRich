@@ -2,10 +2,40 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ReachRich.mapper.BM.boardMapper">
 	<!-- 글 전체 개수 -->
-	<select id="BoardCount" resultType="int">
+	<select id="boardCount" resultType="int">
 		select count(*) from tbl_board
 	</select>
 
-
+	<!-- 전체 목록 -->
+	<select id="boardList" resultType="com.ReachRich.domain.boardDTO">
+		select * from tbl_board order by regdate desc
+	</select>
+	
+	<!-- 조회수 증가 -->
+	<update id="boardHits">
+		update tbl_board set readcnt = readcnt+1 where idx = #{idx}
+	</update>
+	
+	<!-- 특정글 검색(view, modify) -->
+	<select id="boardSelect" resultType="com.ReachRich.domain.boardDTO">
+		select * from tbl_board where idx=#{idx}
+	</select>
+	
+	<!-- 등록 -->
+	<insert id="boardWrite">
+		insert into tbl_board(stock_idx,stock_sector,stock_name,suggestion,email,user_name,content,image,subject,contents)
+			values(tbl_board_seq_idx.nextval, #{stock_sector}, #{stock_name}, #{email},  #{pass}, #{subject}, #{contents})
+	</insert>
+	
+	<!-- 수정 -->
+	<update id="boardModify">
+		update tbl_board set subject=#{subject}, email=#{email}, contents=#{contents} 
+			where idx=#{idx} 
+	</update>
+	
+	<!-- 삭제 -->
+	<delete id="boardDelete">
+		delete from tbl_board where idx=#{idx} and pass=#{pass}
+	</delete>
 
 </mapper>

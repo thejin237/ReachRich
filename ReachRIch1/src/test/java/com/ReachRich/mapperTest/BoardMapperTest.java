@@ -20,6 +20,6 @@ public class BoardMapperTest {
 	
 	@Test
 	public void boardCountTest() {
-		log.info("Total Count : " + mapper.BoardCount());
+		log.info("Total Count : " + mapper.boardCount());
 	}
 }

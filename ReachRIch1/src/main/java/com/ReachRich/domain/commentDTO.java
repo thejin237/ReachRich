@@ -1,4 +1,4 @@
-package com.ReachRich.domian;
+package com.ReachRich.domain;
 
 import lombok.Data;
 

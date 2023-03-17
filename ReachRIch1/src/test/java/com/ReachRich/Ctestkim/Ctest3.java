@@ -5,19 +5,25 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import org.quartz.Scheduler;
+
+import net.bytebuddy.agent.VirtualMachine.ForHotSpot.Connection.Response;
 
 public class Ctest3 {
   public static void main(String[] args) {
     ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor();
-   scheduler.scheduleAtFixedRate(() -> {
-      try {
+    Elements stock = null;
+    scheduler.scheduleAtFixedRate(() -> {
+	   try {
         String url2 = "https://finance.naver.com/item/main.naver?code=005930";
         Document doc2 = Jsoup.connect(url2).get();
         Elements e12 = doc2.getElementsByAttributeValue("class", "chart");
-        System.out.println(e12);
+        Elements e123 = doc2.getElementsByAttributeValue("img", "img_chart_area");
+        Elements e1234 = doc2.getElementsByAttributeValue("class", "no_up");
+        //stock = doc2.getElementsByAttributeValue("class", "chart");
+        //Elements e1234 = doc2.getElementsByAttributeValue("class", "blind");
+        System.out.println(e1234.select("span").get(0));
+        
       } catch (Exception e) {
         e.printStackTrace();
       }

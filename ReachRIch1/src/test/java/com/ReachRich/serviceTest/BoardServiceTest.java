@@ -20,6 +20,6 @@ public class BoardServiceTest {
 	
 	@Test
 	public void boardCountTest() {
-		log.info("Service total count : " + service.BoardCount());
+		log.info("Service total count : " + service.boardCount());
 	}
 }
