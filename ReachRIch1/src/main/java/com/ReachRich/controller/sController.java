@@ -1,8 +1,5 @@
 package com.ReachRich.controller;
 
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -13,6 +10,10 @@ import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,34 +36,13 @@ public class sController {
 	
 	@GetMapping("news")
 	public void news() {
-		
+		 
 		log.info("news log...........");
 		//ScheduledExecutorService sq = news.news();
 		//return "news";
 	}
-	@PostMapping("index")
-	public @ResponseBody Elements index(HttpServletResponse response) {
-	    ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor();
-	    Elements stock = null;
-	     try {
-	    	 String url2 = "https://finance.naver.com/item/main.naver?code=005930";
-	    	 Document doc2 = Jsoup.connect(url2).get();
-	    	 Elements e1234 = doc2.getElementsByAttributeValue("class", "no_up");
-	    	 String stockValue = e1234.select("span").get(0).text();
-	    	 stock = e1234;
-	    	 System.out.print(stockValue);
-	    	 response.setContentType("application/json");//이부분 부터 값을 넘기기위해 변환
-	    	 response.setCharacterEncoding("UTF-8");
-	    	 JSONObject jsonObj = new JSONObject();
-	    	 jsonObj.put("stockValue", stockValue);
-	    	 response.getWriter().write(jsonObj.toString()); 
-	     } catch (Exception e) {
-	    	 e.printStackTrace();
-	     }
-	     log.info("news log...........");
-	     return stock;
-	    
-	}
+	
+
 
 	@GetMapping("board_list")
 	public void boardList(Model model) {

@@ -24,6 +24,15 @@
         <font size="4" face="돋움" color="blue">
         <img src="/img/bullet-01.gif"> <b>자 유 게 시 판</b></font></td></tr>
       <tr>
+      <form name="frm" method="post" action="">
+	      <tr>
+	      	<h2>
+		      	<input type="button" value="정보">
+		      	<input type="button" value="금융">
+		      	<input type="button" value="커뮤">
+	      	</h2>
+	      </tr>
+      </form>
         <td colspan="5" align="right" valign="middle" height="20">
 		<font size="2" face="고딕">전체 : <b>${totcount}</b>건 - 1/ 2 Pages</font></td></tr>
  	   <tr bgcolor="e3e9ff">
@@ -36,12 +45,12 @@
 	<c:forEach var="board" items="${list}">
 		<tr onMouseOver="style.backgroundColor='#D1EEEE'" onMouseOut="style.backgroundColor=''">
 			<td align="center" height="25">
-			<font face="돋움" size="2" color="#000000">${board.idx}</font></td>
+			<font face="돋움" size="2" color="#000000">${board.stock_idx}</font></td>
 			<td align="left" height="20">&nbsp;
 				<font face="돋움" size="2" color="#000000">
-				<a class="list" href="board_hits?idx=${board.idx}">${board.subject}</a></td>
+				<a class="list" href="board_hits?stock_idx=${board.stock_idx}">${board.subject}</a></td>
 					<td align="center" height="20"><font face="돋움" size="2">
-					<a class="list" href="mailto:ein1027@nate.com">${board.name}</a></font></td>
+					<a class="list" href="mailto:ein1027@nate.com">${board.user_name}</a></font></td>
 				<td align="center" height="20"><font face="돋움" size="2">${board.regdate}</font></td>
 				<td align="center" height="20"><font face="돋움" size="2">${board.readcnt}</font></td>
 		</tr>

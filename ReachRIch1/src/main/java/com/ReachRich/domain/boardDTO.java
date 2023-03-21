@@ -8,6 +8,7 @@ public class boardDTO {
 	private String stock_sector;
 	private String stock_name;
 	private int suggestion;
+	private String subject;
 	private int readcnt;
 	private String user_name;
 	private String content;

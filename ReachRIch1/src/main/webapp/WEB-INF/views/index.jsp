@@ -24,17 +24,23 @@
     Elements today = ri.select("img_chart_area");
  	//ArrayList<Elements> list = e12.select("img_chart_area");
  	//Elements stock = RequestContextUtils.getInputFlashMap("stock");
+ 	String cost = request.getParameter("entity");
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script>
+	//location.href="/index.do";
+</script>
 </head>
 <body>
  <h2></h2>
+ <h2><%= cost %></h2>
  <h2><%= e12 %></h2>
- <h2><span id="span" value="">asd</span></h2>
+ <h2><span id="span">asd</span></h2>
+ <font id="chk">aa</font>
  <h2><font style="width: 10px; height: 10px;"> <%= ri %> </font></h2>
  <img id="img_chart_area" src="https://ssl.pstatic.net/imgfinance/chart/item/area/day/005930.png?sidcode=1678783237120" width="700" height="289" alt="이미지 차트" onerror="this.src='https://ssl.pstatic.net/imgstock/chart3/world2008/error_700x289.png'">
  <h2><input type="text" id = "stockname"> </h2>
@@ -45,14 +51,16 @@
 <script type="text/javascript">
 setInterval(function() {
 	  $.ajax({
-	    url: "index",
-	    type: "post",
-	    dataType: "json",
+	    url: "/Ajax",
+	    type: "get",
+	    contentType:"JSON",
+	    dataType: "text",
 	    success: function(data) {
-	      $("#span").html(data.stockValue);
+	    	//alert("성공?" + data);
+	      $("#span").html(data);
 	    },
-	    error: function(xhr, status, error) {
-	      console.log("Error: " + error);
+	    error: function(error) {
+	      alert("실패: " + JSON.stringify(error));
 	    }
 	  });
 	}, 5000); // 5초마다 호출 (1000ms = 1초)

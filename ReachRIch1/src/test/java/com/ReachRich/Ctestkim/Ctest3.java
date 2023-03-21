@@ -19,10 +19,11 @@ public class Ctest3 {
         Document doc2 = Jsoup.connect(url2).get();
         Elements e12 = doc2.getElementsByAttributeValue("class", "chart");
         Elements e123 = doc2.getElementsByAttributeValue("img", "img_chart_area");
-        Elements e1234 = doc2.getElementsByAttributeValue("class", "no_up");
+        //Elements e1234 = doc2.getElementsByAttributeValue("class", "no_up");
+        Elements e1234 = doc2.getElementsByAttributeValue("class", "no_today");
         //stock = doc2.getElementsByAttributeValue("class", "chart");
         //Elements e1234 = doc2.getElementsByAttributeValue("class", "blind");
-        System.out.println(e1234.select("span").get(0));
+        System.out.println(e1234.select("span").get(0).text());
         
       } catch (Exception e) {
         e.printStackTrace();
