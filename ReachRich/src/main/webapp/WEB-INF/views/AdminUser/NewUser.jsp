@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,8 +12,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form method="post" name="user" action="NewUser_pro">
-		<table>
+	<form method="post" name="user" action="NewUser">
+		<table>		
 			<tr>
 				<th>유저아이디</th>
 				<td><input type="text" name="user_id"> <input type="button" value="중복확인" id="btn1"> <font id="id_c" color="blue"></font></td>
@@ -103,7 +104,7 @@
 		$("input[name='repasswd']").on("change", function(){
 			if(user.user_pass.value == user.repasswd.value){
 				pw_c.value = 1;
-				pw_c.innerHTML="";
+				pw_c.innerHTML="비밀번호가 일치합니다";
 				user.user_phone1.focus();
 			}else{
 				pw_c.value = 0;
@@ -115,8 +116,28 @@
 		//비번체크 후 원본 비번을 변경했을때 진행불가 + 비번입력후 비번체크로 이동
 		$("input[name='user_pass']").on("change", function(){
 			pw_c.value = 0;
+			pw_c.innerHTML="";
 			user.repasswd.value = "";
 			user.repasswd.focus();
+		});
+		//전화번호 길이 
+		$("input[name='user_phone1']").on("change",function(){
+			if(user.user_phone1.value.length < 3){
+				alert("핸드폰번호를 다시 확인해주세요");
+				user.user_phone1.focus();
+			}
+		});
+		$("input[name='user_phone2']").on("change",function(){
+			if(user.user_phone2.value.length < 4){
+				alert("핸드폰번호를 다시 확인해주세요");
+				user.user_phone2.focus();
+			}
+		});
+		$("input[name='user_phone3']").on("change",function(){
+			if(user.user_phone3.value.length < 4){
+				alert("핸드폰번호를 다시 확인해주세요");
+				user.user_phone3.focus();
+			}
 		});
 	});
 </script>

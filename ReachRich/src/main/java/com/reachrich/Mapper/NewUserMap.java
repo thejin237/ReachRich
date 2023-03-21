@@ -1,5 +1,7 @@
 package com.reachrich.Mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import com.reachrich.domain.UserDTO;
@@ -9,4 +11,8 @@ public interface NewUserMap {
 	public int userIdCheck(String userid);
 	
 	public int NewUser(UserDTO dto);
+	
+	public List<UserDTO> TestList(String num);
+	
+	public List<UserDTO> TestList2(String key, String subkey);
 }

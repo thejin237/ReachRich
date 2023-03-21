@@ -1,6 +1,10 @@
 package com.reachrich.Controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,6 +28,27 @@ public class AdminUserController {
 	
 	@GetMapping("NewUser")
 	public void NewUser() {}
+
+	@GetMapping("test")
+	public void Test(Model model) {
+		List<UserDTO> list = service.TestList("");
+		model.addAttribute("list", list);
+	}
+	
+	@PostMapping("test")
+	public void TestList(Model model, @RequestParam("key") String key, @RequestParam("subkey") String subkey) {
+		List<UserDTO> list = null;
+		if(key == "" && subkey == "") {
+			list = service.TestList(key);			
+		}else if(subkey == "") {
+			list = service.TestList(key);
+		}else {			
+			list = service.TestList2(key, subkey);
+		}
+		model.addAttribute("key", key);
+		model.addAttribute("subkey", subkey);
+		model.addAttribute("list", list);
+	}
 	
 	@PostMapping("NewUser")
 	public String NewUserPro(UserDTO dto, HttpServletRequest request){
@@ -52,5 +77,17 @@ public class AdminUserController {
 		String email = request.getParameter("email1") + "@" + request.getParameter("email2");
 		String authNum = gc.connectEmail(email);
 		model.addAttribute("authNum", authNum);
+	}
+	
+	@GetMapping("login_ok")
+	public String login_ok(HttpSession session, @RequestParam("userid") String userid) {
+		String url = (String)session.getAttribute("url");
+		String user = userid;
+		session.setAttribute("user", user);
+		if(url != null) {
+			return url;
+		}else {
+			return "/index";
+		}
 	}
 }

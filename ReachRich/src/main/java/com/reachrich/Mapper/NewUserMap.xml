@@ -9,4 +9,26 @@
 		insert into tbl_user(user_id, user_pass, user_phone1, user_phone2, user_phone3, user_email, user_grade, user_wcnt, interest, joindate)
 		 values(#{user_id},#{user_pass},#{user_phone1},#{user_phone2},#{user_phone3},#{user_email},#{user_grade},#{user_wcnt},#{interest},sysdate())
 	</insert>
+	
+	<select id="TestList" resultType="UserDTO">
+		<choose>
+			<when test="key != ''">
+				select user_id from tbl_user where user_id like concat('%',#{key},'%')
+			</when>
+			<otherwise>			
+				select user_id from tbl_user			
+			</otherwise>
+		</choose>
+	</select>
+
+	<select id="TestList2" resultType="UserDTO">
+		<choose>
+			<when test="subkey != '' and key != ''">
+				select user_id from tbl_user where user_id like concat('%',#{key},'%') and user_email like concat('%',#{subkey},'%')
+			</when>
+			<otherwise>			
+				select user_id from tbl_user			
+			</otherwise>
+		</choose>
+	</select>
 </mapper>

@@ -1,5 +1,7 @@
 package com.reachrich.Service;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,5 +23,15 @@ public class NewUserSerImpl implements NewUserSer {
 	public int NewUser(UserDTO dto, HttpServletRequest request) {
 		dto.setUser_email(request.getParameter("email1") + "@" + request.getParameter("email2"));
 		return map.NewUser(dto);
+	}
+	
+	@Override
+	public List<UserDTO> TestList(String key) {
+		return map.TestList(key);
+	}
+	
+	@Override
+	public List<UserDTO> TestList2(String key, String subkey) {
+		return map.TestList2(key, subkey);
 	}
 }
