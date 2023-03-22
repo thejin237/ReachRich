@@ -39,7 +39,8 @@ public class AdminUserController {
 	public void TestList(Model model, @RequestParam("key") String key, @RequestParam("subkey") String subkey) {
 		List<UserDTO> list = null;
 		if(key == "" && subkey == "") {
-			list = service.TestList(key);			
+			list = service.TestList(key);
+			key = null;
 		}else if(subkey == "") {
 			list = service.TestList(key);
 		}else {			
@@ -60,7 +61,7 @@ public class AdminUserController {
 		}
 	}
 	
-	@PostMapping("idCheck") //int 반환은 불가능
+	@PostMapping("idCheck")
 	public @ResponseBody int idCheck(@RequestParam("userid") String userid){
 		int result = 0;
 		if(userid == "") {
