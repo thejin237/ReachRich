@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
  <html>
  <head><meta http-equiv="Content-Type" content="text/html; charset=euc-kr">
    <title>게시판 내용 보기</title>
@@ -36,8 +36,8 @@
          <tr>
            <td class="content">
              <p align="right"><font size="2" face="돋움">
-              <a class="list" href="mailto:ein1027@nate.com">${board.name}</a> / <font size="2" face="돋움">${board.regdate} / ${board.readcnt}번 읽음</font>
-             <p>${board.contents}<p><!--contents의 내용을 <BR>태그로 처리-->
+              <a class="list" href="mailto:ein1027@nate.com">${board.stock_name}</a> / <font size="2" face="돋움">${board.regdate} / ${board.readcnt}번 읽음</font>
+             <p>${board.content}<p><!--contents의 내용을 <BR>태그로 처리-->
            </td>
          </tr>
        </table>
@@ -52,10 +52,10 @@
        <a href="">
        <img src="/img/reply.gif" border="0"></a>&nbsp;&nbsp;
 	   <!-- 수정하기 -->
-       <a href="board_modify?idx=${board.idx}">
+       <a href="board_modify?stock_idx=${board.stock_idx}">
        <img src="/img/edit.gif" border="0"></a>&nbsp;&nbsp;
          <!-- 삭제하기 -->
-       <a href="board_delete?idx=${board.idx}"><img src="/img/del.gif" border="0"></a>&nbsp;&nbsp;
+       <a href="board_delete?stock_idx=${board.stock_idx}"><img src="/img/del.gif" border="0"></a>&nbsp;&nbsp;
        <!-- 목록보기 -->
        <a href="board_list"><img src="/img/list-2.gif" border="0"></a>&nbsp;&nbsp;
       </font>

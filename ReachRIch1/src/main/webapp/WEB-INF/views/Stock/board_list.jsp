@@ -7,7 +7,16 @@
 <style type="text/css">
   a.list {text-decoration:none;color:black;font-size:10pt;}
 </style>
-
+<script>
+	function change_list(){
+		alert("리스트 변경");
+		user.submit();
+	}
+	function change_list2(){
+		alert("리스트 변경");
+		user2.submit();
+	}
+</script>
 </head>
 <body bgcolor="#FFFFFF" topmargin="0" leftmargin="0">
 <table border="0" width="800">
@@ -23,16 +32,53 @@
         <td colspan="7" align="center" valign="center" height="20">
         <font size="4" face="돋움" color="blue">
         <img src="/img/bullet-01.gif"> <b>자 유 게 시 판</b></font></td></tr>
-      <tr>
-      <form name="frm" method="post" action="">
-	      <tr>
-	      	<h2>
-		      	<input type="button" value="정보">
-		      	<input type="button" value="금융">
-		      	<input type="button" value="커뮤">
-	      	</h2>
-	      </tr>
-      </form>
+	<form method="post" name="user" action="board_list">
+		<input type="hidden" name="subkey" value="">
+		<select name="key" onchange="change_list()">
+			<option value="">기본 키
+			<option value="정보" <c:if test="${key eq '정보'}"> selected </c:if>>정보
+			<option value="금융" <c:if test="${key eq '금융'}"> selected </c:if>>금융
+			<option value="커뮤" <c:if test="${key eq '커뮤'}"> selected </c:if>>커뮤
+			<option value="w" <c:if test="${key eq 'w'}"> selected </c:if>>w
+		</select>
+	</form>
+	<c:if test="${key eq '정보'}">
+		<form method="post" name="user2" action="board_list">
+			<input type="hidden" name="key" value="${key}">
+			<select name="subkey" onchange="change_list2()">
+				<option value="">이름
+				<option value="삼성" <c:if test="${subkey eq '삼성'}"> selected </c:if>>삼성
+				<option value="LG" <c:if test="${subkey eq 'LG'}"> selected </c:if>>LG
+				<option value="fd" <c:if test="${subkey eq 'fd'}"> selected </c:if>>fd
+				<option value="213" <c:if test="${subkey eq '213'}"> selected </c:if>>213
+			</select>
+		</form>
+	</c:if>
+	<c:if test="${key eq '금융'}">
+		<form method="post" name="user2" action="board_list">
+			<input type="hidden" name="key" value="${key}">
+			<select name="subkey" onchange="change_list2()">
+				<option value="">서브 이메일
+				<option value="하나" <c:if test="${subkey eq '1234'}"> selected </c:if>>1234
+				<option value="농협" <c:if test="${subkey eq '45'}"> selected </c:if>>45
+				<option value="fd" <c:if test="${subkey eq 'fd'}"> selected </c:if>>fd
+				<option value="213" <c:if test="${subkey eq '213'}"> selected </c:if>>213
+			</select>
+		</form>
+	</c:if>
+	<c:if test="${key eq '커뮤'}">
+		<form method="post" name="user2" action="board_list">
+			<input type="hidden" name="key" value="${key}">
+			<select name="subkey" onchange="change_list2()">
+				<option value="">서브 이메일
+				<option value="1234" <c:if test="${subkey eq '1234'}"> selected </c:if>>1234
+				<option value="45" <c:if test="${subkey eq '45'}"> selected </c:if>>45
+				<option value="fd" <c:if test="${subkey eq 'fd'}"> selected </c:if>>fd
+				<option value="213" <c:if test="${subkey eq '213'}"> selected </c:if>>213
+			</select>
+		</form>
+	</c:if>
+
         <td colspan="5" align="right" valign="middle" height="20">
 		<font size="2" face="고딕">전체 : <b>${totcount}</b>건 - 1/ 2 Pages</font></td></tr>
  	   <tr bgcolor="e3e9ff">
@@ -80,14 +126,14 @@
 					<!-- 검색어를 이용하여 글제목, 작성자, 글내용 중에 하나를 입력 받아 처리하기 위한 부분 -->
 						<tr>
 							<td>
-								<select name="search">
-									<option value="">글제목</option>
-									<option value="">작성자</option>
-									<option value="">글내용</option>
+								<select name="type">
+									<option value="subject" <c:if test="${type.equals('subject')}"> selected </c:if>>글제목</option>
+									<option value="name" <c:if test="${type.equals('name')}"> selected </c:if>>작성자</option>
+									<option value="contents" <c:if test="${type.equals('contents')}"> selected </c:if>>글내용</option>
 								</select>
 							</td>
-							<td> <input type="text" size=20 name=""></td>
-							<td> <a href="#"><img src="/img/search2.gif" border="0"></a></td>
+							<td> <input type="text" size=20 name="key" value="${key}"></td>
+							<td> <a href="javascript:Find()"><img src="/img/search2.gif" border="0"></a></td>
 						</tr>
 					</form>
 				</table>

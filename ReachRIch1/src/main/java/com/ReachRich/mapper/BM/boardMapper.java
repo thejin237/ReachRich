@@ -15,10 +15,16 @@ public interface boardMapper {
 	public List<boardDTO> boardList();
 	
 	//조회수 증가
-	public void boardHits(int idx);
+	public void boardHits(int stock_idx);
 	
 	//특정글 검색(view, modify)
-	public boardDTO boardSelect(int idx);
+	public boardDTO boardSelect(int stock_idx);
+	
+	//특정글 분류(list, modify)
+	public List<boardDTO> boardListSelect(String key);
+	
+	//특정글 분류 서브
+	public List<boardDTO> TestList2(String key, String subkey);
 	
 	//등록
 	public int boardWrite(boardDTO dto);

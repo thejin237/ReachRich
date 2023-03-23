@@ -34,7 +34,7 @@ public class boardServiceImpl implements boardService {
 	}
 
 	@Override
-	public void boardHits(int idx, HttpServletRequest request, HttpServletResponse response) {
+	public void boardHits(int stock_idx, HttpServletRequest request, HttpServletResponse response) {
 		//쿠키 설정
 		log.info("boardHits()....");
 		
@@ -44,17 +44,17 @@ public class boardServiceImpl implements boardService {
 		
 		for(int i=0; i<cookies.length; i++) {
 			info = cookies[i];
-			if(info.getName().equals("boardCookie"+idx)) {
+			if(info.getName().equals("boardCookie"+stock_idx)) {
 				bool = true;
 				break;
 			}
 		}
 		String str = "" + System.currentTimeMillis();
 		if(!bool) {
-			info = new Cookie("boardCookie"+idx,str);
+			info = new Cookie("boardCookie"+stock_idx,str);
 			info.setMaxAge(60*5);
 			response.addCookie(info);
-			mapper.boardHits(idx);
+			mapper.boardHits(stock_idx);
 		}
 		
 	}
@@ -63,6 +63,18 @@ public class boardServiceImpl implements boardService {
 	public boardDTO boardSelect(int idx) {
 		log.info("boardSelect()....");
 		return mapper.boardSelect(idx);
+	}
+	//특정글 분류
+	@Override
+	public List<boardDTO> boardListSelect(String key) {
+		log.info("boardListSelect()....");
+		return mapper.boardListSelect(key);
+	}
+	
+	@Override
+	public List<boardDTO> TestList2(String key, String subkey) {
+		log.info("TestList2....");
+		return mapper.TestList2(key, subkey);
 	}
 	
 	@Override

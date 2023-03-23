@@ -1,26 +1,19 @@
 package com.ReachRich.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.json.JSONObject;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ReachRich.domain.boardDTO;
@@ -42,7 +35,27 @@ public class sController {
 		//return "news";
 	}
 	
-
+	@GetMapping("test")
+	public void Test(Model model) {
+		List<boardDTO> list = service.boardList();
+		model.addAttribute("list", list);
+	}
+	
+	@PostMapping("board_list")
+	public void TestList(Model model, @RequestParam("key") String key, @RequestParam("subkey") String subkey) {
+		List<boardDTO> list = null;
+		if(key == "" && subkey == "") {
+			list = service.boardListSelect(key);
+			key = null;
+		}else if(subkey == "") {
+			list = service.boardListSelect(key);
+		}else {			
+			list = service.TestList2(key, subkey);
+		}
+		model.addAttribute("key", key);
+		model.addAttribute("subkey", subkey);
+		model.addAttribute("list", list);
+	}
 
 	@GetMapping("board_list")
 	public void boardList(Model model) {
@@ -53,16 +66,16 @@ public class sController {
 	
 	//쿠키를 서비스에서 처리
 	@GetMapping("board_hits")
-	public String boardHits(@RequestParam("idx") int idx, HttpServletRequest request, HttpServletResponse response) {
+	public String boardHits(@RequestParam("stock_idx") int stock_idx, HttpServletRequest request, HttpServletResponse response) {
 		log.info("board_hits......");
-		service.boardHits(idx, request, response);
-		return "redirect:board_view?idx="+idx;
+		service.boardHits(stock_idx, request, response);
+		return "redirect:board_view?stock_idx="+stock_idx;
 	}
 	
 	@GetMapping("board_view")
-	public void boardView(@RequestParam("idx") int idx, Model model) {
+	public void boardView(@RequestParam("stock_idx") int stock_idx, Model model) {
 		log.info("board_vlew......");
-		boardDTO dto = service.boardSelect(idx);
+		boardDTO dto = service.boardSelect(stock_idx);
 		dto.setContent(dto.getContent().replace("/n", "<br>"));
 		model.addAttribute("board",dto);
 	}

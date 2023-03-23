@@ -13,17 +13,40 @@
 	
 	<!-- 조회수 증가 -->
 	<update id="boardHits">
-		update tbl_board set readcnt = readcnt+1 where idx = #{idx}
+		update tbl_board set readcnt = readcnt+1 where stock_idx = #{stock_idx}
 	</update>
 	
 	<!-- 특정글 검색(view, modify) -->
 	<select id="boardSelect" resultType="com.ReachRich.domain.boardDTO">
-		select * from tbl_board where idx=#{idx}
+		select * from tbl_board where stock_idx=#{stock_idx}
+	</select>
+	
+	<!-- 특정글 검색(list, modify) -->
+	<select id="boardListSelect" resultType="com.ReachRich.domain.boardDTO">
+		<choose>
+			<when test="key != ''">
+				select * from tbl_board where stock_sector like concat('%',#{key},'%')
+			</when>
+			<otherwise>			
+				select * from tbl_board			
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="TestList2" resultType="com.ReachRich.domain.boardDTO">
+		<choose>
+			<when test="subkey != '' and key != ''">
+				select * from tbl_board where stock_sector like concat('%',#{key},'%') and stock_name like concat('%',#{subkey},'%')
+			</when>
+			<otherwise>			
+				select * from tbl_board			
+			</otherwise>
+		</choose>
 	</select>
 	
 	<!-- 등록 -->
 	<insert id="boardWrite">
-		insert into tbl_board(stock_idx,stock_sector,stock_name,suggestion,email,user_name,content,image,subject,contents)
+		insert into tbl_board(stock_idxx,stock_sector,stock_name,suggestion,email,user_name,content,image,subject,contents)
 			values(tbl_board_seq_idx.nextval, #{stock_sector}, #{stock_name}, #{email},  #{pass}, #{subject}, #{contents})
 	</insert>
 	
