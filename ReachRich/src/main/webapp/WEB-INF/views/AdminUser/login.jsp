@@ -32,11 +32,11 @@
 			alert("아이디가 존재하지 않습니다");
 		</script>
 	</c:when>
-	<c:otherwise>
+	<c:when test="${row == 1}">
 		<script>
 			alert("비밀번호가 맞지 않습니다");
 		</script>
-	</c:otherwise>
+	</c:when>
 </c:choose>
 <script>
 	function login(){

@@ -1,6 +1,5 @@
 package com.reachrich.Controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -90,12 +89,12 @@ public class AdminUserController {
 		if(row == 1) {
 			int row2 = service.Login(dto);
 			if(row2 == 1) {
-				String url = (String)session.getAttribute("url");
+				String uri = (String)session.getAttribute("uri");
 				session.setAttribute("user_id", dto.getUser_id());
-				if(url != null) {
-					return url;
+				if(uri != null) {
+					return uri;
 				}else {
-					return "/index";
+					return "/home";
 				}
 			}else {
 				model.addAttribute("row", row);
@@ -105,5 +104,12 @@ public class AdminUserController {
 			model.addAttribute("row", row);
 			return "/AdminUser/login";
 		}
+	}
+	
+	
+	@PostMapping("logout")
+	public String logout(HttpSession session) {
+		session.removeAttribute("user_id");
+		return "/home";
 	}
 }
