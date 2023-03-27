@@ -8,18 +8,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<c:choose>
-		<c:when test="${row == 0}">
-			<script>
-				alert("아이디가 존재하지 않습니다");
-			</script>
-		</c:when>
-		<c:otherwise>
-			<script>
-				alert("비밀번호가 맞지 않습니다");
-			</script>
-		</c:otherwise>
-	</c:choose>
 	<form method="post" name="log" action="login">
 		<table>
 			<tr>
@@ -38,6 +26,18 @@
 		</table>
 	</form>
 </body>
+<c:choose>
+	<c:when test="${row == 0}">
+		<script>
+			alert("아이디가 존재하지 않습니다");
+		</script>
+	</c:when>
+	<c:otherwise>
+		<script>
+			alert("비밀번호가 맞지 않습니다");
+		</script>
+	</c:otherwise>
+</c:choose>
 <script>
 	function login(){
 		if(log.user_id.value == ""){
