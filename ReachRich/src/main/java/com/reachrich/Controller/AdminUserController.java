@@ -110,6 +110,11 @@ public class AdminUserController {
 	@PostMapping("logout")
 	public String logout(HttpSession session) {
 		session.removeAttribute("user_id");
-		return "/home";
+		String uri = (String)session.getAttribute("uri");
+		if(uri != null) {
+			return uri;
+		}else {
+			return "/home";
+		}
 	}
 }
