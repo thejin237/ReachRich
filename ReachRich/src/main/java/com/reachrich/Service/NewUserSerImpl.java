@@ -34,4 +34,9 @@ public class NewUserSerImpl implements NewUserSer {
 	public List<UserDTO> TestList2(String key, String subkey) {
 		return map.TestList2(key, subkey);
 	}
+	
+	@Override
+	public int Login(UserDTO dto) {
+		return map.Login(dto);
+	}
 }

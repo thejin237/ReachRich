@@ -23,12 +23,16 @@
 
 	<select id="TestList2" resultType="UserDTO">
 		<choose>
-			<when test="subkey != '' and key != ''">
+			<when test="subkey != ''">
 				select user_id from tbl_user where user_id like concat('%',#{key},'%') and user_email like concat('%',#{subkey},'%')
 			</when>
 			<otherwise>			
 				select user_id from tbl_user			
 			</otherwise>
 		</choose>
+	</select>
+	
+	<select id="Login" resultType="int">
+		select count(*) from tbl_user where user_id = #{user_id} and user_pass = #{user_pass}
 	</select>
 </mapper>

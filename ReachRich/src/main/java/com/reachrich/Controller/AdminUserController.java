@@ -28,7 +28,11 @@ public class AdminUserController {
 	
 	@GetMapping("NewUser")
 	public void NewUser() {}
+	
+	@GetMapping("login")
+	public void Login_OK() {}
 
+	
 	@GetMapping("test")
 	public void Test(Model model) {
 		List<UserDTO> list = service.TestList("");
@@ -80,15 +84,26 @@ public class AdminUserController {
 		model.addAttribute("authNum", authNum);
 	}
 	
-	@GetMapping("login_ok")
-	public String login_ok(HttpSession session, @RequestParam("userid") String userid) {
-		String url = (String)session.getAttribute("url");
-		String user = userid;
-		session.setAttribute("user", user);
-		if(url != null) {
-			return url;
+	@PostMapping("login")
+	public String login_ok(HttpSession session, Model model, UserDTO dto) {
+		int row = service.userIdCheck(dto.getUser_id());
+		if(row == 1) {
+			int row2 = service.Login(dto);
+			if(row2 == 1) {
+				String url = (String)session.getAttribute("url");
+				session.setAttribute("user_id", dto.getUser_id());
+				if(url != null) {
+					return url;
+				}else {
+					return "/index";
+				}
+			}else {
+				model.addAttribute("row", row);
+				return "/AdminUser/login";
+			}
 		}else {
-			return "/index";
+			model.addAttribute("row", row);
+			return "/AdminUser/login";
 		}
 	}
 }

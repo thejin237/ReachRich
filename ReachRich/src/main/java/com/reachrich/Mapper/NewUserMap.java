@@ -15,4 +15,6 @@ public interface NewUserMap {
 	public List<UserDTO> TestList(String num);
 	
 	public List<UserDTO> TestList2(String key, String subkey);
+	
+	public int Login(UserDTO dto);
 }
