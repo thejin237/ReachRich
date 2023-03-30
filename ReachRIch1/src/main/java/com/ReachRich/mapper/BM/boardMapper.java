@@ -3,11 +3,14 @@ package com.ReachRich.mapper.BM;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.ReachRich.domain.boardDTO;
 
 @Mapper
 public interface boardMapper {
+
 	//전체 게시글 카운트
 	public int boardCount();
 	
@@ -17,6 +20,9 @@ public interface boardMapper {
 	//조회수 증가
 	public void boardHits(int stock_idx);
 	
+	//추천
+	public void sug(int stock_idx);
+
 	//특정글 검색(view, modify)
 	public boardDTO boardSelect(int stock_idx);
 	
@@ -34,5 +40,6 @@ public interface boardMapper {
 	
 	//삭제
 	public int boardDelete(boardDTO dto);
+	
 	
 }

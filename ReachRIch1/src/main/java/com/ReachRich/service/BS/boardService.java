@@ -17,6 +17,9 @@ public interface boardService {
 	//조회수 증가
 	public void boardHits(int stock_idx, HttpServletRequest request, HttpServletResponse response);
 	
+	//추천
+	public void sug(int stock_idx, HttpServletRequest request, HttpServletResponse response);
+	
 	//특정글 검색(view, modify)
 	public boardDTO boardSelect(int idx);
 	

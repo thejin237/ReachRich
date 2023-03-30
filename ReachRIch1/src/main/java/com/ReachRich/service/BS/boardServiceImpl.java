@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import com.ReachRich.domain.boardDTO;
 import com.ReachRich.mapper.BM.boardMapper;
+import com.ReachRich.mapper.CM.commentMapper;
 
 @Service
 public class boardServiceImpl implements boardService {
@@ -20,6 +21,8 @@ public class boardServiceImpl implements boardService {
 	
 	@Autowired
 	private boardMapper mapper;
+	@Autowired
+	private commentMapper CMmapper;
 	
 	@Override
 	public int boardCount() {
@@ -30,7 +33,13 @@ public class boardServiceImpl implements boardService {
 	@Override
 	public List<boardDTO> boardList() {
 		log.info("boardList()....");
-		return mapper.boardList();
+		List<boardDTO> list = mapper.boardList();
+		int Maxcnt = 0;
+		for(int i=0; i<list.size(); i++) {
+			Maxcnt = CMmapper.cntCM(list.get(i).getStock_idx());
+			list.get(i).setMaxcnt(Maxcnt);
+		}
+		return list;
 	}
 
 	@Override
@@ -55,6 +64,32 @@ public class boardServiceImpl implements boardService {
 			info.setMaxAge(60*5);
 			response.addCookie(info);
 			mapper.boardHits(stock_idx);
+		}
+		
+	}
+	
+	//추천
+	@Override
+	public void sug(int stock_idx, HttpServletRequest request, HttpServletResponse response) {
+		//쿠키 설정
+		log.info("Service.boardSug()....");
+		
+		boolean bool=false;
+		Cookie info = null;
+		Cookie[] cookies = request.getCookies();
+		
+		for(int i=0; i<cookies.length; i++) {
+			info = cookies[i];
+			if(info.getName().equals("boardCookieSug"+stock_idx)) {
+				bool = true;
+				break;
+			}
+		}
+		String str = "" + System.currentTimeMillis();
+		if(!bool) {
+			info = new Cookie("boardCookieSug"+stock_idx,str);
+			response.addCookie(info);
+			mapper.sug(stock_idx);
 		}
 		
 	}

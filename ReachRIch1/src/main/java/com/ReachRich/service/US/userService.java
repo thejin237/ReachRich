@@ -1,11 +1,8 @@
-package com.ReachRich.mapper.UM;
-
-import org.apache.ibatis.annotations.Mapper;
+package com.ReachRich.service.US;
 
 import com.ReachRich.domain.userDTO;
 
-@Mapper
-public interface userMapper {
+public interface userService {
 	
 	public int userIdCheck(String userid);
 	

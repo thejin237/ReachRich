@@ -8,5 +8,8 @@ public class commentDTO {
 	private int stock_idx;
 	private String user_id;
 	private String com_content;
-	private int regdate;
+	private String regdate;
+	
+	private int com_com_idx;
+	private String com_com_content;
 }

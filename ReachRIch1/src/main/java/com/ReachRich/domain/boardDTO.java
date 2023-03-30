@@ -14,4 +14,5 @@ public class boardDTO {
 	private String content;
 	private String image;
 	private String regdate;
+	private int Maxcnt;
 }

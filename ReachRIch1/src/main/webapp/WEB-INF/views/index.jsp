@@ -47,6 +47,7 @@
  <p id = "stockCost">a-a</p>
  <a href="Stock/news">바로가기</a>
  <a href="Stock/board_list">리스트가기</a>
+ <a href="Stock/login">로그인가기</a>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 setInterval(function() {
@@ -59,7 +60,7 @@ setInterval(function() {
 	    	//alert("성공?" + data);
 	      $("#span").html(data);
 	    },
-	    error: function(error) {
+	    error: function(error) {   
 	      alert("실패: " + JSON.stringify(error));
 	    }
 	  });

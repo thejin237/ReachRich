@@ -1,6 +1,9 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="java.util.*,com.ReachRich.domain.*" %>
+<%
 
+%>
 <html>
 <head><title>게시판 읽기</title>
 <link rel="stylesheet" type="text/css" href="/stylesheet.css">
@@ -94,7 +97,7 @@
 			<font face="돋움" size="2" color="#000000">${board.stock_idx}</font></td>
 			<td align="left" height="20">&nbsp;
 				<font face="돋움" size="2" color="#000000">
-				<a class="list" href="board_hits?stock_idx=${board.stock_idx}">${board.subject}</a></td>
+				<a class="list" href="board_hits?stock_idx=${board.stock_idx}">${board.subject}(${board.maxcnt})</a></td>
 					<td align="center" height="20"><font face="돋움" size="2">
 					<a class="list" href="mailto:ein1027@nate.com">${board.user_name}</a></font></td>
 				<td align="center" height="20"><font face="돋움" size="2">${board.regdate}</font></td>

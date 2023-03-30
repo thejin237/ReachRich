@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,10 +15,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ReachRich.domain.boardDTO;
+import com.ReachRich.domain.commentDTO;
+import com.ReachRich.domain.userDTO;
 import com.ReachRich.service.BS.boardService;
+import com.ReachRich.service.CS.commentService;
+import com.ReachRich.service.US.userService;
 
 @Controller
 @RequestMapping("Stock")
@@ -26,6 +32,12 @@ public class sController {
 	
 	@Autowired
 	private boardService service;
+	
+	@Autowired
+	private commentService CMservice;
+	
+	@Autowired
+	public userService UMservice;
 	
 	@GetMapping("news")
 	public void news() {
@@ -60,8 +72,9 @@ public class sController {
 	@GetMapping("board_list")
 	public void boardList(Model model) {
 		log.info("board_list......");
+		
 		model.addAttribute("totcount",service.boardCount());
-		model.addAttribute("list",service.boardList());
+		model.addAttribute("list", service.boardList());
 	}
 	
 	//쿠키를 서비스에서 처리
@@ -72,13 +85,43 @@ public class sController {
 		return "redirect:board_view?stock_idx="+stock_idx;
 	}
 	
+	//추천
+	@PostMapping("Sug")
+	public String sug(@RequestParam("stock_idx") int stock_idx, HttpServletRequest request, HttpServletResponse response) {
+		log.info("suggestion + .....");
+		log.info("stock_idx : "+stock_idx);
+		
+		service.sug(stock_idx, request, response);
+		return "redirect:board_view?stock_idx="+stock_idx;
+	}
+	
 	@GetMapping("board_view")
 	public void boardView(@RequestParam("stock_idx") int stock_idx, Model model) {
 		log.info("board_vlew......");
 		boardDTO dto = service.boardSelect(stock_idx);
 		dto.setContent(dto.getContent().replace("/n", "<br>"));
+		List<commentDTO> list = CMservice.CMList(stock_idx); 
 		model.addAttribute("board",dto);
+		model.addAttribute("list", list);
+		model.addAttribute("cnt", CMservice.cntCM(dto.getStock_idx()));
 	}
+	
+	@PostMapping("board_view")
+	public String board_comment(commentDTO dto, @RequestParam("stock_idx") int stock_idx) {
+		log.info("board_comment.....");
+		dto.setCom_idx(CMservice.cntCM(stock_idx)+1);
+		CMservice.insertCM(dto);
+		return "redirect:board_view?stock_idx="+stock_idx;
+	}
+	
+	@PostMapping("com_comment")
+	public String com_comment(commentDTO dto, @RequestParam("stock_idx") int stock_idx) {
+		log.info("board_com_comment.....");
+		dto.setCom_com_idx(CMservice.cntcom_CM(dto.getCom_com_idx())+1);
+		CMservice.insertcom_CM(dto);
+		return "redirect:board_view?stock_idx="+stock_idx;
+	}
+
 	
 	@GetMapping("board_write")
 	public void boardWrite() {
@@ -137,4 +180,54 @@ public class sController {
 		log.info("board_delete_pro_pro......");
 		
 	}
+	
+	@GetMapping("login")
+	public void Login_OK() {}
+	
+	@PostMapping("idCheck")
+	public @ResponseBody int idCheck(@RequestParam("userid") String userid){
+		int result = 0;
+		if(userid == "") {
+			result = -1;
+		}else {			
+			result = UMservice.userIdCheck(userid);
+		}
+		return result;
+	}
+	
+	@PostMapping("login")
+	public String login_ok(HttpSession session, Model model, userDTO dto) {
+		int row = UMservice.userIdCheck(dto.getUser_id());
+		if(row == 1) {
+			int row2 = UMservice.Login(dto);
+			if(row2 == 1) {
+				String uri = (String)session.getAttribute("uri");
+				session.setAttribute("user_id", dto.getUser_id());
+				if(uri != null) {
+					return uri;
+				}else {
+					return "/home";
+				}
+			}else {
+				model.addAttribute("row", row);
+				return "/Stock/login";
+			}
+		}else {
+			model.addAttribute("row", row);
+			return "/Stock/login";
+		}
+	}
+	
+	
+	@PostMapping("logout")
+	public String logout(HttpSession session) {
+		session.removeAttribute("user_id");
+		String uri = (String)session.getAttribute("uri");
+		if(uri != null) {
+			return uri;
+		}else {
+			return "/home";
+		}
+	}
+	
 }

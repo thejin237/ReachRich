@@ -16,6 +16,11 @@
 		update tbl_board set readcnt = readcnt+1 where stock_idx = #{stock_idx}
 	</update>
 	
+	<!-- 추천 -->
+	<update id="sug">
+		update tbl_board set suggestion = suggestion+1 where stock_idx = #{stock_idx}
+	</update>
+	
 	<!-- 특정글 검색(view, modify) -->
 	<select id="boardSelect" resultType="com.ReachRich.domain.boardDTO">
 		select * from tbl_board where stock_idx=#{stock_idx}
@@ -60,5 +65,5 @@
 	<delete id="boardDelete">
 		delete from tbl_board where idx=#{idx} and pass=#{pass}
 	</delete>
-
+	
 </mapper>

@@ -1,13 +1,16 @@
-package com.ReachRich.mapper.CM;
+package com.ReachRich.service.CS;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Mapper;
-
 import com.ReachRich.domain.commentDTO;
 
-@Mapper
-public interface commentMapper {
+
+public interface commentService {
+//	private static commentService CMservice;
+//	
+//	public static commentService getcommentService() {
+//		return CMservice;
+//	}
 	//댓글 가저오기
 	public List<commentDTO> CMList(int stock_idx);
 	
