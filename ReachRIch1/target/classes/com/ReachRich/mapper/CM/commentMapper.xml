@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ReachRich.mapper.CM.commentMapper">
+	<!-- 댓글 리스트 -->
+	<select id="CMList" resultType="com.ReachRich.domain.commentDTO">
+		select * from tbl_comment where stock_idx=#{stock_idx}
+	</select>
+	
+	<!-- 댓글 달기 -->
+	<insert id="insertCM">
+		insert into tbl_comment(com_idx, stock_idx, user_id, com_content, regdate)
+			values(#{com_idx}, #{stock_idx}, #{user_id}, #{com_content}, now())
+	</insert>
+	
+	<!-- 지정 댓글의 댓글 수 -->
+	<select id="cntCM" resultType="int">
+		select count(com_idx) from tbl_comment where stock_idx=#{stock_idx};
+	</select>
+	
+	<!-- 지정 대댓글의 댓글 수 -->
+	<select id="cntcom_CM" resultType="int">
+		select count(com_com_idx) from tbl_com_comment where com_idx=#{com_idx};
+	</select>
+	
+		<!-- 대댓글 달기 -->
+	<insert id="insertcom_CM">
+		insert into tbl_com_comment(stock_idx, com_idx, user_id, com_com_content, regdate)
+			values(#{stock_idx}, #{com_idx}, #{user_id}, #{com_com_content}, now())
+	</insert>
+</mapper>
