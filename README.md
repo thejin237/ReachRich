@@ -1,3 +1,3 @@
 # ReachRich
-JSL Team Project
+JSL Team Project  
 Stock Information & Community
