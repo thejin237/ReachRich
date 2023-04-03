@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.reachrich.demo.mapper.ReachrichMapper">
+
+	<select id="userIdCheck" resultType="int">
+		select count(*) from tbl_user where user_id = #{id}
+	</select>
+	<insert id="NewUser" parameterType="UserDTO">
+		insert into tbl_user(user_id, user_pass,user_name,user_birth, user_phone, user_email,user_gender, user_grade, user_wcnt, interest, joindate)
+		 values(#{id},#{pswd1},#{name},#{birth},#{mobile},#{email},#{gender},#{user_grade},#{user_wcnt},#{interest},sysdate())
+	</insert>
+</mapper>
