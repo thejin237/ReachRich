@@ -102,8 +102,20 @@ public class sController {
 		dto.setContent(dto.getContent().replace("/n", "<br>"));
 		List<commentDTO> list = CMservice.CMList(stock_idx); 
 		model.addAttribute("board",dto);
-		model.addAttribute("list", list);
+		model.addAttribute("list", list);//댓글 부분
 		model.addAttribute("cnt", CMservice.cntCM(dto.getStock_idx()));
+		int maxcnt = 0;
+		List<commentDTO> com_comList = CMservice.Listcom_CM1();
+		model.addAttribute("com_comList", com_comList);
+//		for(int i=0; i<list.size(); i++) {
+//			maxcnt = CMservice.cntcom_CM(list.get(i).getCom_idx(), stock_idx);
+//			for(int x=0; x<maxcnt; x++) {
+//				com_comList = CMservice.Listcom_CM(stock_idx, list.get(i).getCom_idx());
+//				
+//				model.addAttribute("c_com_idx", list.get(i).getCom_idx());
+//				model.addAttribute("com_comList", com_comList);
+//			}
+//		}
 	}
 	
 	@PostMapping("board_view")
@@ -115,11 +127,17 @@ public class sController {
 	}
 	
 	@PostMapping("com_comment")
-	public String com_comment(commentDTO dto, @RequestParam("stock_idx") int stock_idx) {
+	public String com_comment(commentDTO dto) {
 		log.info("board_com_comment.....");
-		dto.setCom_com_idx(CMservice.cntcom_CM(dto.getCom_com_idx())+1);
+		log.info("user_id : "+dto.getUser_id());
+		//log.info("content : "+ dto.getCom_com_content());
+		//log.info("com_idx : "+ dto.getCom_idx());
+		//log.info("com_idx : "+ ci);
+		//dto.setCom_idx(com_idx2);
+		dto.setCom_com_idx(CMservice.cntcom_CM(dto.getCom_idx(),dto.getStock_idx())+1);
 		CMservice.insertcom_CM(dto);
-		return "redirect:board_view?stock_idx="+stock_idx;
+		
+		return "redirect:board_view?stock_idx="+dto.getStock_idx();
 	}
 
 	

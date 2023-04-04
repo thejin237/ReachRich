@@ -86,21 +86,37 @@ a.list {
 						</tr>
 					</table>
 				</form> 
-				<form name="com_com" method="post" action="com_comment">
 				<!-- 댓글 리스트 -->
 				<c:if test="${!empty list}">
-					<c:forEach var="dto" items="${list}">
-						<br>${dto.com_idx} | ${dto.user_id} | ${dto.com_content} | ${dto.regdate}<br>
-						<input type="button" id="re_c" value="답글" onclick="show('${dto.com_idx}')">
-						<div id="${dto.com_idx}" style="visibility: hidden;">
-							<input type="hidden" name="com_idx" value="${dto.com_idx}">
+				<form name="com_com" method="post" action="com_comment">
+						<div id="re" style="visibility: hidden;">
+							<input type="text" name="com_idx" readonly="readonly" size="3" >
+							<input type="hidden" name="ci" value="${com_idx}" size="3">
 							<input type="hidden" name="stock_idx" value="${board.stock_idx}">
-							<input type="text" name="com_com_content">
-							<input type="button" value="등록" onclick="com_comment()"> 
+							<input type="text" readonly="readonly" name="user_idx" value="${user_id}" size="3">
+							<input type="text" id="tes" name="com_com_content">
+						<c:set var="com_com_con" value="${com_com_content}"></c:set>
+							<!-- 대댓글 등록버튼 -->
+							<input type="button" value="등록" onclick="com_comment('${dto.com_idx},${dto.stock_idx}')"> 
 						</div>
+						<input type="hidden" name="user_id" value="${user_id}">
+					<c:forEach var="dto" items="${list}">
+						<br>${dto.com_idx} | ${dto.user_id} | ${dto.com_content} | ${dto.regdate}
+							<!--<input type="button" name="cm" value="${dto.com_idx}" onclick="ch('${dto.com_idx}')">-->
+						<input type="button" id="re_c" value="답글" onclick="show('re'),ch('${dto.com_idx}')">
+						<br>
+						<!-- 대댓글 -->
+						<c:if test="${!empty com_comList}">
+							<c:forEach var="c_dto" items="${com_comList}">
+								<c:if test="${ dto.com_idx eq c_dto.com_idx }">
+									<br>ㄴ${c_dto.com_idx} - ${c_dto.com_com_idx} | ${c_dto.user_id} | ${c_dto.com_com_content} | ${c_dto.regdate}<br>
+								</c:if>
+							</c:forEach>		
+						</c:if>		
 					</c:forEach>								
-				</c:if>
 				</form>
+				
+				</c:if>
 				<!--**** 여기서부터 게시물 내용 아래쪽의 버튼들이 나옵니다. 답변, 수정, 삭제, 목록보기 ****-->
 				<p align="center">
 					<font size="2"> <!-- 새글쓰기 --> <a href="board_write"> <img
@@ -115,7 +131,9 @@ a.list {
 					</font></td>
 		</tr>
 	</table>
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script type="text/javascript">
+	x = document.getElementById("tes");
 	function send() {
 		if(frm.com_content.value==""){
 			alert("내용을 적어주세요");
@@ -137,10 +155,29 @@ a.list {
 		}else {
 			aa.style.visibility = 'visible';
 		}
+		com_com.com_com_content.focus();
+		//alert("대댓글 = " + a);
 	}
-	function com_comment() {
+	function ch(i) {
+		alert(i)
+		com_com.com_idx.value=i;
+	}
+	function com_comment(ci) {
 		alert("대댓글 등록 시도");
+		//alert(tes);
+		alert(ci);
+		if(com_com.user_idx.value==""){
+			alert("댓글은 로그인이 필요합니다");
+			return;
+		}
+		//alert(com_com.com_com_con.value);
+		//alert(ci,si,cmcm);
+		//document.forms[i].submit();
+		var ce = ci;
+		var com_list = [];
+		//	for{int i=0; i<list.}
 		com_com.submit();
+
 	}
 </script>
 </body>

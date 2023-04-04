@@ -37,14 +37,26 @@ public class commentServiceImpl implements commentService {
 	}
 	
 	@Override
-	public int cntcom_CM(int com_idx) {
+	public int cntcom_CM(int com_idx, int stock_idx) {
 		log.info("ServiceIM.cntcom_CM log......");
-		return mapper.cntcom_CM(com_idx);
+		return mapper.cntcom_CM(com_idx, stock_idx);
 	}
 	
 	@Override
 	public int insertcom_CM(commentDTO dto) {
 		log.info("ServiceIM.insertcom_CM log......");
 		return mapper.insertcom_CM(dto);
+	}
+	
+	@Override
+	public List<commentDTO> Listcom_CM(int stock_idx, int com_idx) {
+		log.info("ServiceIM.Listcom_CM log......");
+		return mapper.Listcom_CM(stock_idx, com_idx);
+	}
+	
+	@Override
+	public List<commentDTO> Listcom_CM1() {
+		log.info("ServiceIM.Listcom_CM log......");
+		return mapper.Listcom_CM1();
 	}
 }
