@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.ReachRich.service.ReachRichServicelmpl;
+import com.ReachRich.service.ReachRichServiceImpl;
 import com.ReachRich.util.GmailConfirm;
 import com.ReachRich.domain.*;
 
@@ -25,7 +25,7 @@ public class ReachRichController {
 			LoggerFactory.getLogger(ReachRichController.class);
 
 	@Autowired
-	private ReachRichServicelmpl service;
+	private ReachRichServiceImpl service;
 	
 	@GetMapping("reachrich_login")
 	public void reachrichLogin() {

@@ -22,7 +22,6 @@ body {
     height: 44px;
     cursor: pointer;
 }
-
 #header {
     padding-top: 62px;
     padding-bottom: 20px;
@@ -32,15 +31,12 @@ body {
     position: relative;
     height: 100%;
 }
-
 #content {
     position: absolute;
     left: 50%;
     transform: translate(-50%);
     width: 460px;
 }
-
-
 
 
 /* 입력폼 */
@@ -55,7 +51,6 @@ h3 {
     font-size: 14px;
     font-weight: 700;
 }
-
 
 .box {
     display: block;
@@ -77,7 +72,6 @@ h3 {
     background: #fff;
     position: relative;
 }
-
 .int {
     display: block;
     position: relative;
@@ -87,7 +81,6 @@ h3 {
     background: #fff;
     font-size: 15px;
 }
-
 input {
     font-family: Dotum,'돋움',Helvetica,sans-serif;    
 }
@@ -95,15 +88,12 @@ input {
 .box.int_id {
     padding-right: 110px;
 }
-
 .box.int_pass {
     padding-right: 40px;
 }
-
 .box.int_pass_check {
     padding-right: 40px;
 }
-
 .step_url {
     /*@naver.com*/
     position: absolute;
@@ -112,7 +102,6 @@ input {
     font-size: 15px;
     color: #8e8e8e;
 }
-
 .pswdImg {
     width: 18px;
     height: 20px;
@@ -128,19 +117,16 @@ input {
     display: table;
     width: 100%;
 }
-
 #bir_yy {
     display: table-cell;
     width: 147px;
     
 }
-
 #bir_mm {
     display: table-cell;
     width: 147px;
     vertical-align: middle;
 }
-
 #bir_dd {
     display: table-cell;
     width: 147px;
@@ -149,7 +135,6 @@ input {
 #bir_mm, #bir_dd {
     padding-left: 10px;
 }
-
 select {
     width: 100%;
     height: 29px;
@@ -442,7 +427,6 @@ select {
 
     /*변수 선언*/
 
-
     var id = document.querySelector('#id');
 
     var pw1 = document.querySelector('#pswd1');
@@ -471,7 +455,6 @@ select {
 
     /*이벤트 핸들러 연결*/
 
-
     id.addEventListener("focusout", checkId);
     pw1.addEventListener("focusout", checkPw);
     pw2.addEventListener("focusout", comparePw);
@@ -494,7 +477,6 @@ select {
 
 
     /*콜백 함수*/
-
 
     function checkId() {
         var idPattern = /[a-zA-Z0-9_-]{5,20}/;
@@ -573,7 +555,6 @@ select {
             isMonthSelected();
         }
 
-
         function isMonthSelected() {
             if(mm.value === "월") {
                 error[4].innerHTML = "태어난 월을 선택하세요.";
@@ -590,8 +571,6 @@ select {
             }
         }
     }
-
-
 
     function isBirthRight() {
         var datePattern = /\d{1,2}/;
@@ -616,7 +595,6 @@ select {
             error[4].style.display = "none";
         }
     }
-
 
     function isEmailCorrect() {
         var emailPattern = /[a-z0-9]{2,}@[a-z0-9-]{2,}\.[a-z0-9]{2,}/;
@@ -644,9 +622,8 @@ select {
         } else {
             error[7].style.display = "none";
         }
-
-        
     }
+    
     function chk_em(){
 		var url = "em_check?email=" + user.email.value;
 		window.open(url,"이메일 인증창","width=450 height=300");
@@ -748,6 +725,7 @@ select {
         
     }
     */
+    
     </script>
    
 </body>

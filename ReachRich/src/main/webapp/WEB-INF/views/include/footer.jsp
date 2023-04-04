@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,8 +12,8 @@
 <link rel="stylesheet" type="text/css" href="css/search.css">
 </head>
 <body>
-		<footer class="footer">
-			여기는 footer 입니다.Lorem ipsum dolor sit amet consectetur.
-		</footer>
+	<footer class="footer"> 
+	여기는 footer 입니다.Lorem ipsum dolor sitamet consectetur.
+	</footer>
 </body>
 </html>

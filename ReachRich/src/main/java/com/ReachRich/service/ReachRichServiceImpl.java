@@ -10,7 +10,7 @@ import com.ReachRich.util.UserSHA256;
 import com.ReachRich.domain.*;
 
 @Service
-public class ReachRichServicelmpl {
+public class ReachRichServiceImpl {
 	@Autowired
 	private ReachRichMapper mapper;
 	
