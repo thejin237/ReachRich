@@ -1,6 +1,7 @@
 package com.ReachRich.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -127,17 +128,31 @@ public class sController {
 	}
 	
 	@PostMapping("com_comment")
-	public String com_comment(commentDTO dto) {
+	public @ResponseBody String com_comment(commentDTO dto, @RequestParam("stock_idx") int stock_idx, @RequestParam Map<String, Object> param, HttpServletRequest request) {
 		log.info("board_com_comment.....");
-		log.info("user_id : "+dto.getUser_id());
+		//log.info("user_id : "+dto.getUser_id());
+		//log.info("con : "+value);
 		//log.info("content : "+ dto.getCom_com_content());
 		//log.info("com_idx : "+ dto.getCom_idx());
 		//log.info("com_idx : "+ ci);
 		//dto.setCom_idx(com_idx2);
 		dto.setCom_com_idx(CMservice.cntcom_CM(dto.getCom_idx(),dto.getStock_idx())+1);
-		CMservice.insertcom_CM(dto);
+		log.info("택스트 내용 : "+param);
+		String com_idx = (String) param.get("com_idx");
+		dto.setStock_idx(stock_idx);
+		dto.setCom_idx(Integer.parseInt(com_idx));
+		dto.setUser_id((String)param.get("user_id"));
 		
-		return "redirect:board_view?stock_idx="+dto.getStock_idx();
+		String con = null;
+		for(int i=1; i<param.size(); i++) {
+			if(param.get("text01"+i)!="") {
+				con = (String)param.get("text01"+i);
+				break;
+			}
+		}
+		dto.setCom_com_content(con);
+		CMservice.insertcom_CM(dto);
+		return "redirect:board_view?stock_idx="+stock_idx;
 	}
 
 	
@@ -237,14 +252,14 @@ public class sController {
 	}
 	
 	
-	@PostMapping("logout")
+	@GetMapping("logout")
 	public String logout(HttpSession session) {
 		session.removeAttribute("user_id");
 		String uri = (String)session.getAttribute("uri");
 		if(uri != null) {
 			return uri;
 		}else {
-			return "/home";
+			return "Stock/login";
 		}
 	}
 	

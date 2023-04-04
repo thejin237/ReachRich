@@ -25,6 +25,51 @@ a.list {
 	color: black;
 	font-size: 10pt;
 }
+
+#a1 {
+	/*
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+*/
+	width: 100px;
+	height: 100px;
+	background-image: url();
+	background-repeat: no-repeat;
+	background-size: cover;
+	image-rendering: optimizeSpeed;
+	image-rendering: -moz-crisp-edges;
+	image-rendering: -o-crisp-edges;
+	image-rendering: -webkit-optimize-contrast;
+	image-rendering: pixelated;
+	image-rendering: optimize-contrast;
+	-ms-interpolation-mode: nearest-neighbor;
+	image-rendering: auto;
+}
+
+.popup-window {
+	position: relative;
+	display: none;
+	border: 1px solid rgba(0, 0, 0, 0);
+}
+
+.popup-window.is-active {
+	display: block;
+}
+
+.popup-window__close {
+	position: absolute;
+	right: 1rem;
+	top: 1rem;
+	width: 1rem;
+	height: 1rem;
+	line-height: 1rem;
+	text-align: center;
+	cursor: pointer;
+	user-select: none;
+	padding: 0.5rem;
+}
 </style>
 
 </head>
@@ -40,7 +85,8 @@ a.list {
 					<tr>
 						<td colspan="2"><img src="/img/bullet-01.gif"> <font
 							color="blue" size="3">자 유 게 시 판</font><font size="2"> -
-								글읽기</font></td>
+								글읽기</font><input type="button" value="로그아웃" onclick="logout()"> </td>
+								
 					</tr>
 				</table>
 				<p>
@@ -89,22 +135,35 @@ a.list {
 				<!-- 댓글 리스트 -->
 				<c:if test="${!empty list}">
 				<form name="com_com" method="post" action="com_comment">
+						<!-- 대댓글 등록 -->
+							<input type="hidden" name="com_idx" id="com_idx" readonly="readonly" size="3" >
 						<div id="re" style="visibility: hidden;">
-							<input type="text" name="com_idx" readonly="readonly" size="3" >
-							<input type="hidden" name="ci" value="${com_idx}" size="3">
 							<input type="hidden" name="stock_idx" value="${board.stock_idx}">
-							<input type="text" readonly="readonly" name="user_idx" value="${user_id}" size="3">
-							<input type="text" id="tes" name="com_com_content">
-						<c:set var="com_com_con" value="${com_com_content}"></c:set>
-							<!-- 대댓글 등록버튼 -->
-							<input type="button" value="등록" onclick="com_comment('${dto.com_idx},${dto.stock_idx}')"> 
+							<input type="hidden" readonly="readonly" name="user_idx" value="${user_id}" size="3">
+							<input type="hidden" id="tes" name="com_com_content">
+
+
 						</div>
 						<input type="hidden" name="user_id" value="${user_id}">
 					<c:forEach var="dto" items="${list}">
 						<br>${dto.com_idx} | ${dto.user_id} | ${dto.com_content} | ${dto.regdate}
 							<!--<input type="button" name="cm" value="${dto.com_idx}" onclick="ch('${dto.com_idx}')">-->
-						<input type="button" id="re_c" value="답글" onclick="show('re'),ch('${dto.com_idx}')">
+						<input type="button" id="re_c" value="답글" onclick="show('${dto.com_idx}'),ch('${dto.com_idx}')">
 						<br>
+												<!-- 대댓글 등록 -->
+						<div id="${dto.com_idx}" style="visibility: hidden;">
+							<input type="text" name="com_idx1" id = "ci${dto.com_idx}" readonly="readonly" size="3" >
+							<input type="hidden" name="ci" value="${com_idx}" size="3">
+							<input type="hidden" name="stock_idx" value="${board.stock_idx}">
+							<input type="text" readonly="readonly" name="user_idx" value="${user_id}" size="3">
+							<input type="text" id="text01${dto.com_idx}"  name="text01${dto.com_idx}">
+							<!-- 대댓글 등록버튼 -->
+							<input type="button" value="등록" onclick="com_comment('${dto.com_idx}','${dto.stock_idx}')"> 
+						</div>
+
+
+
+
 						<!-- 대댓글 -->
 						<c:if test="${!empty com_comList}">
 							<c:forEach var="c_dto" items="${com_comList}">
@@ -113,7 +172,8 @@ a.list {
 								</c:if>
 							</c:forEach>		
 						</c:if>		
-					</c:forEach>								
+					</c:forEach>	
+												
 				</form>
 				
 				</c:if>
@@ -159,25 +219,53 @@ a.list {
 		//alert("대댓글 = " + a);
 	}
 	function ch(i) {
-		alert(i)
+		alert("IDX : "+i);
 		com_com.com_idx.value=i;
+		$('#com_idx').val(i);
+		$('#ci'+i).val(i);
+		document.getElementById("ci"+i).innerHTML = i;
 	}
-	function com_comment(ci) {
+	function com_comment(ci,si) {
 		alert("대댓글 등록 시도");
 		//alert(tes);
+		//var value = $('#text01'+ci).val();
+		var value = $('#text01'+ci).val();
 		alert(ci);
-		if(com_com.user_idx.value==""){
+		//alert("택스트"+document.com_com.text01[ci].value);
+		alert("택스트"+value);
+		if(frm.user_id.value==""){
 			alert("댓글은 로그인이 필요합니다");
 			return;
 		}
 		//alert(com_com.com_com_con.value);
 		//alert(ci,si,cmcm);
 		//document.forms[i].submit();
-		var ce = ci;
-		var com_list = [];
+		//var ce = ci;
+		//var com_list = [];
 		//	for{int i=0; i<list.}
-		com_com.submit();
+	$.ajax({
+		url : "com_comment",
+		type : "post",
+		datatype : 'JSON',
+		data: {
+			//com_idx: "${com_idx}",
+			stock_idx: "${board.stock_idx}",
+			user_id: "${user_id}",
+	 		com_content: $('#text01'+ci).val()
 
+		},
+		success : function(data) {
+			alert("성공");
+		},
+	    error:function(error){
+	    	alert(" error = " + JSON.stringify(error)); // 실패 시 처리
+	    }
+	});
+
+		com_com.submit();
+		}
+	function logout(){
+		location.href="logout";
 	}
 </script>
 </body>
