@@ -128,7 +128,7 @@ public class sController {
 	}
 	
 	@PostMapping("com_comment")
-	public @ResponseBody String com_comment(commentDTO dto, @RequestParam("stock_idx") int stock_idx, @RequestParam Map<String, Object> param, HttpServletRequest request) {
+	public String com_comment(commentDTO dto, @RequestParam("stock_idx") int stock_idx, @RequestParam Map<String, Object> param, HttpServletRequest request) {
 		log.info("board_com_comment.....");
 		//log.info("user_id : "+dto.getUser_id());
 		//log.info("con : "+value);

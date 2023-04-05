@@ -31,7 +31,7 @@
          <td width="5%" align="right"><img src="/img/bullet-02.gif"></td>
          <td width="15%"><font size="2" face="돋움">글쓴이</font></td>
          <td width="80%">
-         <input type="text" size="20" name="user_name"></td>
+         <input type="text" size="20" name="user_name" value="${user_id}"></td>
        </tr>
        <tr>
        

@@ -19,6 +19,15 @@
 		alert("리스트 변경");
 		user2.submit();
 	}
+	function send(u){
+		alert("준비");
+		if(u == null){
+			alert("로그인이 필요합니다.");
+			location.href="login";
+		}else{
+			location.href="board_write";
+		}
+	}
 </script>
 </head>
 <body bgcolor="#FFFFFF" topmargin="0" leftmargin="0">
@@ -142,7 +151,8 @@
 				</table>
 			</td>
 			<td width="25%" align="right">
-			<a href="board_write"><img src="/img/write.gif" border="0"></a>
+			<!-- 글쓰기 -->
+			<a href="javascript:send(${user_id})"><img src="/img/write.gif" border="0"></a>
 			</td>
 		</tr>
 	</table>

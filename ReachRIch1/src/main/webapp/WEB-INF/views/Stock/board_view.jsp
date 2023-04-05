@@ -117,8 +117,20 @@ a.list {
 						</tr>
 					</form>
 				</table>
-
+			<!--**** 여기서부터 게시물 내용 아래쪽의 버튼들이 나옵니다. 답변, 수정, 삭제, 목록보기 ****-->
+				<p align="center">
+					<font size="2"> <!-- 새글쓰기 --> <a href="board_write"> <img
+							src="/img/write.jpg" border="0"></a>&nbsp;&nbsp; <!-- 답글쓰기 -->
+						<a href=""> <img src="/img/reply.gif" border="0"></a>&nbsp;&nbsp;
+						<!-- 수정하기 --> <a href="board_modify?stock_idx=${board.stock_idx}">
+							<img src="/img/edit.gif" border="0">
+					</a>&nbsp;&nbsp; <!-- 삭제하기 --> <a
+						href="board_delete?stock_idx=${board.stock_idx}"><img
+							src="/img/del.gif" border="0"></a>&nbsp;&nbsp; <!-- 목록보기 --> <a
+						href="board_list"><img src="/img/list-2.gif" border="0"></a>&nbsp;&nbsp;
+					</font>
 				<!-- 댓글쓰는 부분 -->
+				<div align="center">
 				<form name="frm" method="post" action="board_view">
 					<table>
 						<tr>
@@ -132,6 +144,7 @@ a.list {
 						</tr>
 					</table>
 				</form> 
+				</div>
 				<!-- 댓글 리스트 -->
 				<c:if test="${!empty list}">
 				<form name="com_com" method="post" action="com_comment">
@@ -177,18 +190,7 @@ a.list {
 				</form>
 				
 				</c:if>
-				<!--**** 여기서부터 게시물 내용 아래쪽의 버튼들이 나옵니다. 답변, 수정, 삭제, 목록보기 ****-->
-				<p align="center">
-					<font size="2"> <!-- 새글쓰기 --> <a href="board_write"> <img
-							src="/img/write.jpg" border="0"></a>&nbsp;&nbsp; <!-- 답글쓰기 -->
-						<a href=""> <img src="/img/reply.gif" border="0"></a>&nbsp;&nbsp;
-						<!-- 수정하기 --> <a href="board_modify?stock_idx=${board.stock_idx}">
-							<img src="/img/edit.gif" border="0">
-					</a>&nbsp;&nbsp; <!-- 삭제하기 --> <a
-						href="board_delete?stock_idx=${board.stock_idx}"><img
-							src="/img/del.gif" border="0"></a>&nbsp;&nbsp; <!-- 목록보기 --> <a
-						href="board_list"><img src="/img/list-2.gif" border="0"></a>&nbsp;&nbsp;
-					</font></td>
+
 		</tr>
 	</table>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
@@ -258,7 +260,7 @@ a.list {
 			alert("성공");
 		},
 	    error:function(error){
-	    	alert(" error = " + JSON.stringify(error)); // 실패 시 처리
+	    	//alert(" error = " + JSON.stringify(error)); // 실패 시 처리
 	    }
 	});
 
