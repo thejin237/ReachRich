@@ -14,7 +14,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<input id="testOnchange" type="text" value=""> <font id="te_c" color="blue">폰트부분</font>
+	<input id="testOnchange" type="text" value=""> <font id="te_c" color="blue">폰트부분.</font>
 	 
 	<div class="cost-area">
 		<span class="currency-sign">KRW</span>
