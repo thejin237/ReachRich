@@ -11,6 +11,7 @@ import com.ReachRich.domain.*;
 
 @Service
 public class ReachRichServicelmpl {
+	
 	@Autowired
 	private ReachRichMapper mapper;
 	
