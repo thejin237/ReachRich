@@ -40,15 +40,15 @@
       	var spe = pw.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
 
         if(pw.length < 8){
-    	    btnPayment.attr('disabled',true)
+    	    btnPayment.attr('disabled',true);
         	te_c.innerHTML = "8자리 ~ 20자리 이내로 입력해주세요.";
          	return false;
         }else if(pw.search(/\s/) != -1){
-    	    btnPayment.attr('disabled',true)
+    	    btnPayment.attr('disabled',true);
         	te_c.innerHTML = "비밀번호는 공백 없이 입력해주세요.";
          	return false;
         }else if(num < 0 || eng < 0 || spe < 0 ){
-    	    btnPayment.attr('disabled',true)
+    	    btnPayment.attr('disabled',true);
         	alert("영문,숫자, 특수문자를 혼합하여 입력해주세요.");
         	testOnchange.value = "";
          	return false;
@@ -71,9 +71,9 @@
       $(".payment-btn-active").on("change keyup paste", function() {
         var currentVal = $(this).val();
         if(currentVal == oldVal) {
-          btnPayment.attr('disabled',true)
+          btnPayment.attr('disabled',true);
         } else {
-          btnPayment.attr('disabled',false)
+          btnPayment.attr('disabled',false);
         }
       });
 </script>
