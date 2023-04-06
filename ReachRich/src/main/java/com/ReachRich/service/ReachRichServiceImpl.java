@@ -10,8 +10,12 @@ import com.ReachRich.util.UserSHA256;
 import com.ReachRich.domain.*;
 
 @Service
+<<<<<<< HEAD:ReachRich/src/main/java/com/ReachRich/service/ReachRichServicelmpl.java
 public class ReachRichServicelmpl {
 	
+=======
+public class ReachRichServiceImpl {
+>>>>>>> e5e04fb4bd267a0f9cc829e7e79cf58eff7c3342:ReachRich/src/main/java/com/ReachRich/service/ReachRichServiceImpl.java
 	@Autowired
 	private ReachRichMapper mapper;
 	
