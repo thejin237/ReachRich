@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -37,6 +38,15 @@ public class AdminUserController {
 		List<UserDTO> list = service.TestList("");
 		model.addAttribute("list", list);
 	}
+
+	@GetMapping("test2")
+	public void Test2(Model model){
+		List<UserDTO> list = service.TestList("");
+		model.addAttribute("list", list);
+	}
+
+	@GetMapping("test3")
+	public void Test3(){}
 	
 	@PostMapping("test")
 	public void TestList(Model model, @RequestParam("key") String key, @RequestParam("subkey") String subkey) {
@@ -52,6 +62,24 @@ public class AdminUserController {
 		model.addAttribute("key", key);
 		model.addAttribute("subkey", subkey);
 		model.addAttribute("list", list);
+	}
+
+	@PostMapping("test2")
+	public @ResponseBody List<UserDTO> TestList2(Model model, @RequestParam("idArray[]") List<String> list2) {
+		for(int i=0; i<list2.size(); i++) {
+			System.out.println(list2.get(i));
+		}
+		List<UserDTO> list = service.CheckBoxTest(list2);
+		System.out.println(list.size());
+		return list;
+	}
+
+	@PostMapping("test3")
+	public @ResponseBody String TestList3(Model model, @RequestParam("array") List<UserDTO> list) {
+		for(int i=0; i<list.size(); i++) {
+			System.out.println(list.get(i).getUser_id());
+		}
+		return "성공!";
 	}
 	
 	@PostMapping("NewUser")

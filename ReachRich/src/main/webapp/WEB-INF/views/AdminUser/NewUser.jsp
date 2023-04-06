@@ -65,6 +65,7 @@
 			</tr>
 			<tr>
 				<td align="center" colspan="2">
+					<input type="image" src=""> <img src="">
 					<input type="button" value="회원등록" onclick="test()">				
 					<input type="button" value="다시쓰기" onclick="user.reset()">				
 				</td>
@@ -202,8 +203,8 @@
 				x++;
 			}
 		}
-		if(x < 1){
-			alert("관심종목 최소 1개이상 선택해주세요");
+		if(x < 2){
+			alert("관심종목 최소 2개이상 선택해주세요");
 			return;
 		}
 		if(document.getElementById("id_c").value != 1){

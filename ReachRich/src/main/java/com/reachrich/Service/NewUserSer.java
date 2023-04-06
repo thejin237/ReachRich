@@ -16,4 +16,6 @@ public interface NewUserSer {
 	public List<UserDTO> TestList2(String key, String subkey);
 	
 	public int Login(UserDTO dto);
+	
+	public List<UserDTO> CheckBoxTest(List<String> list);
 }

@@ -35,4 +35,10 @@
 	<select id="Login" resultType="int">
 		select count(*) from tbl_user where user_id = #{user_id} and user_pass = #{user_pass}
 	</select>
+	
+	<select id="CheckBoxTest" resultType="UserDTO">
+		select * from tbl_user where user_id like	
+		<foreach collection="list" item="item" open="(" close=")" separator=","> 
+			concat('%',#{item},'%') </foreach>
+	</select>
 </mapper>

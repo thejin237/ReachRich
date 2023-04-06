@@ -39,4 +39,9 @@ public class NewUserSerImpl implements NewUserSer {
 	public int Login(UserDTO dto) {
 		return map.Login(dto);
 	}
+	
+	@Override
+	public List<UserDTO> CheckBoxTest(List<String> list) {
+		return map.CheckBoxTest(list);
+	}
 }
