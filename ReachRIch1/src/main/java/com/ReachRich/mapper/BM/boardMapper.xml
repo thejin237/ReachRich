@@ -8,7 +8,7 @@
 
 	<!-- 전체 목록 -->
 	<select id="boardList" resultType="com.ReachRich.domain.boardDTO">
-		select * from tbl_board order by regdate desc
+		select * from tbl_board order by regdate asc
 	</select>
 	
 	<!-- 조회수 증가 -->
@@ -38,6 +38,11 @@
 		</choose>
 	</select>
 	
+	<!-- 파일이름찾기 -->
+	<select id="selectFlie" resultType="com.ReachRich.domain.boardDTO">
+		select image from tbl_board where stock_idx = #{stock_idx}
+	</select>
+	
 	<select id="TestList2" resultType="com.ReachRich.domain.boardDTO">
 		<choose>
 			<when test="subkey != '' and key != ''">
@@ -51,8 +56,8 @@
 	
 	<!-- 등록 -->
 	<insert id="boardWrite">
-		insert into tbl_board(stock_idxx,stock_sector,stock_name,suggestion,email,user_name,content,image,subject,contents)
-			values(tbl_board_seq_idx.nextval, #{stock_sector}, #{stock_name}, #{email},  #{pass}, #{subject}, #{contents})
+		insert into tbl_board(stock_idx,stock_sector,stock_name, user_name, content, imageName, fileName, subject, regdate, attachFile, imageFiles)
+			values(#{stock_idx}, #{stock_sector}, #{stock_name}, #{user_name}, #{content}, #{imageName}, #{fileName}, #{subject}, now(), #{attachFile}, #{imageFiles})
 	</insert>
 	
 	<!-- 수정 -->
@@ -65,5 +70,10 @@
 	<delete id="boardDelete">
 		delete from tbl_board where idx=#{idx} and pass=#{pass}
 	</delete>
+	
+	<!-- 파일이름찾기 -->
+	<select id="FileSelect" resultType="com.ReachRich.domain.boardDTO">
+		SELECT hex(imageFiles) from tbl_board where stock_idx = #{stock_idx}
+	</select>
 	
 </mapper>

@@ -25,6 +25,14 @@
  	//ArrayList<Elements> list = e12.select("img_chart_area");
  	//Elements stock = RequestContextUtils.getInputFlashMap("stock");
  	String cost = request.getParameter("entity");
+    
+ 	String kosp = "https://kr.investing.com/indices/kospi";
+	Document kospD = Jsoup.connect(kosp).get();
+	Elements kosDE = kospD.getElementsByAttributeValue("class", "instrument-price_instrument-price__xfgbB flex items-end flex-wrap font-bold");
+    //Elements today = ri.select("img_chart_area");
+ 	//ArrayList<Elements> list = e12.select("img_chart_area");
+ 	//Elements stock = RequestContextUtils.getInputFlashMap("stock");
+ 	//String k = request.getParameter("kosDE");
 %>
 <!DOCTYPE html>
 <html>
@@ -39,6 +47,10 @@
  <h2></h2>
  <h2><%= cost %></h2>
  <h2><%= e12 %></h2>
+ <h2>aaa</h2>
+ <div align="center">
+ <h2><%= kosDE %></h2>
+ </div>
  <h2><span id="span">asd</span></h2>
  <font id="chk">aa</font>
  <h2><font style="width: 10px; height: 10px;"> <%= ri %> </font></h2>

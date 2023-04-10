@@ -32,6 +32,9 @@ public interface boardMapper {
 	//특정글 분류 서브
 	public List<boardDTO> TestList2(String key, String subkey);
 	
+	//파일이름 찾기
+	public boardDTO selectFlie(int stock_idx);
+	
 	//등록
 	public int boardWrite(boardDTO dto);
 	
@@ -40,6 +43,8 @@ public interface boardMapper {
 	
 	//삭제
 	public int boardDelete(boardDTO dto);
+	
+
 	
 	
 }

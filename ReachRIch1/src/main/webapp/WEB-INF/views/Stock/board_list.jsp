@@ -47,7 +47,7 @@
 	<form method="post" name="user" action="board_list">
 		<input type="hidden" name="subkey" value="">
 		<select name="key" onchange="change_list()">
-			<option value="">기본 키
+			<option value="">전체
 			<option value="정보" <c:if test="${key eq '정보'}"> selected </c:if>>정보
 			<option value="금융" <c:if test="${key eq '금융'}"> selected </c:if>>금융
 			<option value="커뮤" <c:if test="${key eq '커뮤'}"> selected </c:if>>커뮤

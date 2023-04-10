@@ -6,6 +6,7 @@
 <script>
 	function send(){
 		alert("등록시도");
+		
 		board.submit();
 	}
 </script>
@@ -38,12 +39,12 @@
 	   <tr>
          <td align="right"><img src="/img/bullet-02.gif"></td>
          <td><font size="2" face="돋움">제목</font></td>
-         <td><input type="text" size="60" name="stock_name" ></td>
+         <td><input type="text" size="60" name="subject" ></td>
        </tr>
 	   <tr>
          <td align="right"><img src="/img/bullet-02.gif"></td>
          <td><font size="2" face="돋움">섹터</font></td>
-         <td><input type="text" size="60" name="stock_name" ></td>
+         <td><input type="text" size="60" name="stock_sector" ></td>
        </tr>
        <tr>
          <td align="right"><img src="/img/bullet-02.gif"></td>
@@ -54,9 +55,16 @@
          <tr>
          <td align="right"><img src="/img/bullet-02.gif"></td>
          <td><font size="2" face="돋움">이미지/사진</font></td>
-          <td><input type="file" size="10" name="image" ><font size="2" face="돋움"></font></td>
+         <td><font size="2" face="돋움">
+         		<input type="file" multiple="multiple" size="10" name="image1" ><br>
+         		<label for="attachFile">첨부파일 : </label>
+				<input type="file" multiple="multiple" id="attachFile" name="attachFile"/><br>
+				<label for="imageFiles">이미지 파일들 : </label>
+				<input type="file" multiple="multiple" id="imageFiles" name="imageFiles" multiple="multiple"/>
+         	 </font>
+         </td>
         </tr>
-        <tr></tr>
+
 		<tr>
           <td align="right">&nbsp;</td>
           <td><font size="2">&nbsp;</font></td>

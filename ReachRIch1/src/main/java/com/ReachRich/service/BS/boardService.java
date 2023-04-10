@@ -29,6 +29,9 @@ public interface boardService {
 	//특정글 분류 서브
 	public List<boardDTO> TestList2(String key, String subkey);
 	
+	//파일이름찾기
+	public boardDTO selectFlie(int stock_idx);
+	
 	//등록
 	public int boardWrite(boardDTO dto);
 	

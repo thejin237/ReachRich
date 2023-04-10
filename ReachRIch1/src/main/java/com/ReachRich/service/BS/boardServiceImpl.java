@@ -112,6 +112,14 @@ public class boardServiceImpl implements boardService {
 		return mapper.TestList2(key, subkey);
 	}
 	
+	//파일이름찾기
+	@Override
+	public boardDTO selectFlie(int stock_idx) {
+		log.info("IMselectFlie....");
+		
+		return mapper.selectFlie(stock_idx);
+	}
+	
 	@Override
 	public int boardWrite(boardDTO dto) {
 		log.info("boardWrite()....");
