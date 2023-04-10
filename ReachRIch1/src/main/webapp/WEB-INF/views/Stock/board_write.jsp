@@ -44,7 +44,32 @@
 	   <tr>
          <td align="right"><img src="/img/bullet-02.gif"></td>
          <td><font size="2" face="돋움">섹터</font></td>
-         <td><input type="text" size="60" name="stock_sector" ></td>
+         <td>
+         	<select name="stock_sector">
+ 				<option value="">주식의 종류를 말합니다
+ 				<option value="정보기술">정보기술        
+ 				<option value="헬스케어">헬스케어        
+ 				<option value="임의소비재">임의소비재        
+ 				<option value="금융">금융        
+ 				<option value="커뮤니케이션서비스">커뮤니케이션서비스        
+ 				<option value="산업재">산업재        
+ 				<option value="필수소비재">필수소비재        
+ 				<option value="에너지">에너지        
+ 				<option value="소재">소재        
+ 				<option value="유틸리티">유틸리티       
+ 				<option value="부동산">부동산        
+         	</select>
+         </td>
+       </tr>
+	   <tr>
+         <td align="right"><img src="/img/bullet-02.gif"></td>
+         <td><font size="2" face="돋움">종목명</font></td>
+         <td><input type="text" size="60" name="stock_name" ></td>
+       </tr>
+	   <tr>
+         <td align="right"><img src="/img/bullet-02.gif"></td>
+         <td><font size="2" face="돋움">종목번호</font></td>
+         <td><input type="text" size="60" name="stock_number" ></td>
        </tr>
        <tr>
          <td align="right"><img src="/img/bullet-02.gif"></td>
@@ -56,11 +81,13 @@
          <td align="right"><img src="/img/bullet-02.gif"></td>
          <td><font size="2" face="돋움">이미지/사진</font></td>
          <td><font size="2" face="돋움">
-         		<input type="file" multiple="multiple" size="10" name="image1" ><br>
-         		<label for="attachFile">첨부파일 : </label>
-				<input type="file" multiple="multiple" id="attachFile" name="attachFile"/><br>
-				<label for="imageFiles">이미지 파일들 : </label>
+
+
 				<input type="file" multiple="multiple" id="imageFiles" name="imageFiles" multiple="multiple"/>
+
+				<!-- <input type="file" multiple="multiple" id="attachFile" name="attachFile" multiple="multiple"/> -->
+
+				
          	 </font>
          </td>
         </tr>

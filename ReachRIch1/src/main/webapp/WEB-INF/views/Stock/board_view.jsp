@@ -118,13 +118,7 @@ a.list {
 									href="mailto:ein1027@nate.com">${board.stock_name}</a> / <font
 									size="2" face="돋움">${board.regdate} / ${board.readcnt}번
 										읽음</font><br>
-					<text>첨부파일(클릭시 다운) : </text>
-						<a th:if="${board.attachFile}" th:href="|C:/Users/alfmg/git/ReachRich/ReachRIch1/files/attach/${board.stock_idx}|" th:text="${board.attachFile.uploadFilename}" />
-						<br/><br/>
-					<text>첨부된 이미지 파일들</text>
-						<br/>
-						<img th:each="imageFile : ${board.imageFiles}" th:src="|images/${imageFile.storeFilename}|" width="100px" height="100px" style="border-color: black; border-style: solid; border-width: thin;"/>
-						<br/><br/>									
+								
 					<img name="${board.imageName}" alt="${board.imageName}" src="/image/${board.imageName}">
 									<p>${board.content}<p>
 										<!--contents의 내용을 <BR>태그로 처리-->

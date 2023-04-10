@@ -11,6 +11,7 @@ public class boardDTO {
 	private int stock_idx;
 	private String stock_sector;
 	private String stock_name;
+	private String stock_number;
 	private int suggestion;
 	private String subject;
 	private int readcnt;

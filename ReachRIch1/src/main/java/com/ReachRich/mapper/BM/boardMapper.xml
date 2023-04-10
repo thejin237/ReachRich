@@ -56,8 +56,8 @@
 	
 	<!-- 등록 -->
 	<insert id="boardWrite">
-		insert into tbl_board(stock_idx,stock_sector,stock_name, user_name, content, imageName, fileName, subject, regdate, attachFile, imageFiles)
-			values(#{stock_idx}, #{stock_sector}, #{stock_name}, #{user_name}, #{content}, #{imageName}, #{fileName}, #{subject}, now(), #{attachFile}, #{imageFiles})
+		insert into tbl_board(stock_idx,stock_sector,stock_name, stock_number, user_name, content, imageName, fileName, subject, regdate, attachFile, imageFiles)
+			values(#{stock_idx}, #{stock_sector}, #{stock_name}, #{stock_number}, #{user_name}, #{content}, #{imageName}, #{fileName}, #{subject}, now(), #{attachFile}, #{imageFiles})
 	</insert>
 	
 	<!-- 수정 -->

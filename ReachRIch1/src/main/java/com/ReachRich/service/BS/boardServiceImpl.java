@@ -81,13 +81,16 @@ public class boardServiceImpl implements boardService {
 		for(int i=0; i<cookies.length; i++) {
 			info = cookies[i];
 			if(info.getName().equals("boardCookieSug"+stock_idx)) {
+				log.info("Service.boardSug() : F....");
 				bool = true;
 				break;
 			}
 		}
 		String str = "" + System.currentTimeMillis();
 		if(!bool) {
+			log.info("Service.boardSug() : T....");
 			info = new Cookie("boardCookieSug"+stock_idx,str);
+			info.setMaxAge(5);
 			response.addCookie(info);
 			mapper.sug(stock_idx);
 		}

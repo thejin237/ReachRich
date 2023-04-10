@@ -113,8 +113,7 @@ public class sController {
 		log.info("stock_idx : "+stock_idx);
 		
 		service.sug(stock_idx, request, response);
-		boardDTO image = service.selectFlie(stock_idx);
-		return "redirect:board_view?stock_idx=?"+stock_idx;
+		return "redirect:board_view?stock_idx="+stock_idx;
 	}
 	
 	//쿠키를 서비스에서 처리
@@ -126,8 +125,7 @@ public class sController {
 		return "redirect:board_view?stock_idx="+stock_idx;
 	}
 	
-    @Value("${image.file.path}")
-    private String imagePath;
+
     @GetMapping("board_view")
 	public void boardView(@RequestParam("stock_idx") int stock_idx, Model model) throws
 	MalformedURLException {
@@ -199,7 +197,7 @@ public class sController {
 	@Autowired
 	private FileStore fileStore;
 	@PostMapping("board_write")
-	public String boardWritePro(boardDTOFrom dtof, RedirectAttributes rttr, @RequestParam("image1") MultipartFile file, @RequestParam("attachFile") MultipartFile file1, @RequestParam("imageFiles") MultipartFile file2) throws IOException{
+	public String boardWritePro(boardDTOFrom dtof, RedirectAttributes rttr, @RequestParam("imageFiles") MultipartFile file2) throws IOException{
 		log.info("board_write_pro......");
 		//dto.setO_img(file.getOriginalFilename());
 		 boardDTO dto = new boardDTO();
@@ -217,27 +215,27 @@ public class sController {
 	    dtof.setRegdate(formatDate);
 		
 	    // 첨부파일, 이미지들 처리하는 부분
-	    UploadFile attachFile = fileStore.storeFile(dtof.getAttachFile());
+	   // UploadFile attachFile = fileStore.storeFile(dtof.getAttachFile());
 	    List<UploadFile> imageFiles = fileStore.storeFiles(dtof.getImageFiles());
-	    log.info("파일 이름 ? :"+attachFile);
+	    //log.info("파일 이름 ? :"+attachFile);
 	    log.info("이미지 이름 ? :"+imageFiles);
 	    //log.info("이미지 이름 ? :"+imageFiles.get(0).getStoreFilename());
 	    
 	    //imageFiles.get(0).equals("storeFilename");
-	    dto.setAttachFile(attachFile);
+	   // dto.setAttachFile(attachFile);
 	    dto.setImageFiles(imageFiles);
 		
 
 
-        String originalFilename = file1.getOriginalFilename();
-		String storeFilename = UUID.randomUUID() + "." + extractExt(originalFilename);
+        //String originalFilename = file1.getOriginalFilename();
+		//String storeFilename = UUID.randomUUID() + "." + extractExt(originalFilename);
 		
 		if(!imageFiles.equals(null)) {
 			dto.setImageName(imageFiles.get(0).getStoreFilename()); // 업로드 파일 명
 		}
-		if(dto.getAttachFile()!=null) {
-			dto.setFileName(dto.getAttachFile().getStoreFilename());
-		}
+//		if(dto.getAttachFile()!=null) {
+//			dto.setFileName(dto.getAttachFile().getStoreFilename());
+//		}
 			
 		//file.transferTo(new File("C:/Users/alfmg/Downloads/upload")); // 파일저장
 		log.info("내용 : "+dto.getAttachFile());
