@@ -106,7 +106,8 @@
 			<font face="돋움" size="2" color="#000000">${board.stock_idx}</font></td>
 			<td align="left" height="20">&nbsp;
 				<font face="돋움" size="2" color="#000000">
-				<a class="list" href="board_hits?stock_idx=${board.stock_idx}">${board.subject}(${board.maxcnt})</a></td>
+				<a class="list" href="board_hits?stock_idx=${board.stock_idx}">${board.subject}
+				<c:if test="${board.maxcnt!=0}">(${board.maxcnt})</c:if></a></td>
 					<td align="center" height="20"><font face="돋움" size="2">
 					<a class="list" href="mailto:ein1027@nate.com">${board.user_name}</a></font></td>
 				<td align="center" height="20"><font face="돋움" size="2">${board.regdate}</font></td>

@@ -119,11 +119,14 @@ a.list {
 									size="2" face="돋움">${board.regdate} / ${board.readcnt}번
 										읽음</font><br>
 								
-					<img name="${board.imageName}" alt="${board.imageName}" src="/image/${board.imageName}">
-									<p>${board.content}<p>
+								<img name="${board.imageName}" alt="${board.imageName}" src="/image/${board.imageName}">
+								
+								
+								<p>${board.content}<p>
 										<!--contents의 내용을 <BR>태그로 처리-->
 						</td>
 					</tr>
+
 					<form name="sug" method="post" action="Sug">
 						<tr>
 							<td align="center">
@@ -133,16 +136,25 @@ a.list {
 						</tr>
 					</form>
 				</table>
+					<form name="del0" method="post" action="board_delete">
+						<input type="hidden" name="imageName" value="${board.imageName}">
+						<input type="hidden" name="stock_idx" value="${board.stock_idx}">
+					</form>
 			<!--**** 여기서부터 게시물 내용 아래쪽의 버튼들이 나옵니다. 답변, 수정, 삭제, 목록보기 ****-->
 				<p align="center">
-					<font size="2"> <!-- 새글쓰기 --> <a href="board_write"> <img
-							src="/img/write.jpg" border="0"></a>&nbsp;&nbsp; <!-- 답글쓰기 -->
-						<a href=""> <img src="/img/reply.gif" border="0"></a>&nbsp;&nbsp;
-						<!-- 수정하기 --> <a href="board_modify?stock_idx=${board.stock_idx}">
+					<font size="2"> 
+					<!-- 새글쓰기 --> <a href="board_write"> <img
+							src="/img/write.jpg" border="0"></a>&nbsp;&nbsp; &nbsp;&nbsp;
+					<!-- 수정하기 --> <a href="board_modify?stock_idx=${board.stock_idx}">
 							<img src="/img/edit.gif" border="0">
-					</a>&nbsp;&nbsp; <!-- 삭제하기 --> <a
-						href="board_delete?stock_idx=${board.stock_idx}"><img
-							src="/img/del.gif" border="0"></a>&nbsp;&nbsp; <!-- 목록보기 --> <a
+							</a>&nbsp;&nbsp; 
+					<!-- 삭제하기 --> <a
+						href="board_delete?stock_idx=${board.stock_idx}" onclick="del1()"><img
+							src="/img/del.gif" border="0"></a>
+						<button onclick="del1()"><img
+							src="/img/del.gif" border="0"></button>
+							&nbsp;&nbsp; 
+					<!-- 목록보기 --> <a
 						href="board_list"><img src="/img/list-2.gif" border="0"></a>&nbsp;&nbsp;
 					</font>
 
@@ -285,6 +297,11 @@ a.list {
 		}
 	function logout(){
 		location.href="logout";
+	}
+	function del1(){
+		alert("삭제 가기");
+		del0.submit();
+		
 	}
 </script>
 </body>

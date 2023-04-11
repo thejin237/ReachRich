@@ -2,16 +2,19 @@ package com.ReachRich.controller;
 
 
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,7 +24,6 @@ import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.http.HttpStatus;
@@ -202,8 +204,8 @@ public class sController {
 		//dto.setO_img(file.getOriginalFilename());
 		 boardDTO dto = new boardDTO();
 		 
-		int cnt = service.boardCount();
-		dto.setStock_idx(cnt+1);
+		int max = service.boardIdx();
+		dto.setStock_idx(max+1);
 		dto.setStock_sector(dtof.getStock_sector());
 		dto.setStock_name(dtof.getStock_name());
 		dto.setSubject(dtof.getSubject());
@@ -230,7 +232,7 @@ public class sController {
         //String originalFilename = file1.getOriginalFilename();
 		//String storeFilename = UUID.randomUUID() + "." + extractExt(originalFilename);
 		
-		if(!imageFiles.equals(null)) {
+		if(file2.getSize()!=0) {
 			dto.setImageName(imageFiles.get(0).getStoreFilename()); // 업로드 파일 명
 		}
 //		if(dto.getAttachFile()!=null) {
@@ -301,15 +303,22 @@ public class sController {
 	}
 	
 	@GetMapping("board_delete")
-	public void boardDelete(@RequestParam("idx") int idx, Model model) {
+	public void boardDelete(@RequestParam("stock_idx") int stock_idx, Model model, @RequestParam("imageName") String imagename) {
 		log.info("board_delete......");
-		model.addAttribute("idx",idx);
+		model.addAttribute("stock_idx",stock_idx);
+		model.addAttribute("imagename",imagename);
 	}
 	
 	@PostMapping("board_delete")
-	public String boardDeletePro(boardDTO dto, RedirectAttributes rttr) {
+	public String boardDeletePro(@RequestParam("stock_idx") int stock_idx, boardDTO dto, RedirectAttributes rttr, @RequestParam("imageName") String imagename) throws IOException {
 		log.info("board_delete_pro......");
+		Path file = Paths.get("C:/Users/alfmg/git/ReachRich/ReachRIch1/files/"+imagename);
+		log.info("파일 경로1 : "+file);
+		Files.deleteIfExists(file);
+		
 		int row = service.boardDelete(dto);
+		int row1 = service.boardComDel(dto);
+		int row2 = service.boardComComDel(dto);
 		rttr.addFlashAttribute("row",row);
 		return "redirect:board_delete_pro";
 	}

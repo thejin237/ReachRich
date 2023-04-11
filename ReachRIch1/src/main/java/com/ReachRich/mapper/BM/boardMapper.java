@@ -14,6 +14,9 @@ public interface boardMapper {
 	//전체 게시글 카운트
 	public int boardCount();
 	
+	//전체 게시글 idx 맥스
+	public int boardIdx();
+	
 	//글전체 목록
 	public List<boardDTO> boardList();
 	
@@ -43,7 +46,9 @@ public interface boardMapper {
 	
 	//삭제
 	public int boardDelete(boardDTO dto);
-	
+	//댓글 대댓글 삭제
+	public int boardComDel(boardDTO dto);
+	public int boardComComDel(boardDTO dto);
 
 	
 	

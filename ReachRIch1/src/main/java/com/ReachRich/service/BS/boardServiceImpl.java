@@ -29,7 +29,12 @@ public class boardServiceImpl implements boardService {
 		log.info("count.service..");
 		return mapper.boardCount();
 	}
+	@Override
+	public int boardIdx() {
+		log.info("boardIdx.service..");
 
+		return mapper.boardIdx();
+	}
 	@Override
 	public List<boardDTO> boardList() {
 		log.info("boardList()....");
@@ -139,5 +144,15 @@ public class boardServiceImpl implements boardService {
 	public int boardDelete(boardDTO dto) {
 		log.info("boardDelete()....");
 		return mapper.boardDelete(dto);
+	}
+	@Override
+	public int boardComDel(boardDTO dto) {
+		log.info("boardComDelete()....");
+		return mapper.boardComDel(dto);
+	}
+	@Override
+	public int boardComComDel(boardDTO dto) {
+		log.info("boardComComDelete()....");
+		return mapper.boardComComDel(dto);
 	}
 }

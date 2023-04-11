@@ -5,6 +5,10 @@
 	<select id="boardCount" resultType="int">
 		select count(*) from tbl_board
 	</select>
+	<!-- idx 맥스값 -->
+	<select id="boardIdx" resultType="int">
+		select IFNULL(max(stock_idx), 0) from tbl_board
+	</select>
 
 	<!-- 전체 목록 -->
 	<select id="boardList" resultType="com.ReachRich.domain.boardDTO">
@@ -68,7 +72,14 @@
 	
 	<!-- 삭제 -->
 	<delete id="boardDelete">
-		delete from tbl_board where idx=#{idx} and pass=#{pass}
+		delete from tbl_board where stock_idx=#{stock_idx}
+	</delete>
+	<!-- 댓글 대댓글 삭제 -->
+	<delete id="boardComDel">
+		delete from tbl_comment where stock_idx=#{stock_idx}
+	</delete>
+	<delete id="boardComComDel">
+		delete from tbl_com_comment where stock_idx=#{stock_idx}
 	</delete>
 	
 	<!-- 파일이름찾기 -->

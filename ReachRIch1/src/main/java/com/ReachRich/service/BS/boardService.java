@@ -10,6 +10,8 @@ import com.ReachRich.domain.boardDTO;
 public interface boardService {
 	//전체 글 수
 	public int boardCount();
+	//전체 idx 맥스값
+	public int boardIdx();
 	
 	//글전체 목록
 	public List<boardDTO> boardList();
@@ -40,4 +42,7 @@ public interface boardService {
 	
 	//삭제
 	public int boardDelete(boardDTO dto);
+	//댓글 대댓글 삭제
+	public int boardComDel(boardDTO dto);
+	public int boardComComDel(boardDTO dto);
 }

@@ -6,13 +6,19 @@
  <script>
  	function send(){
  		alert("삭제시도");
- 		board.submit();
+ 		if(board.stock_idx.value==board.pass.value){
+	 		alert("삭제");
+ 			board.submit();	
+ 		}else{
+	 		alert("비밀번호가 다릅니다.");
+ 		}
  	}
  </script>
  </head>
  <body>
  <form name="board" method="post" action="board_delete">
- <input type="hidden" name="idx" value="${idx}">
+ <input type="hidden" name="stock_idx" value="${stock_idx}">
+ <input type="hidden" name="imageName" value="${imagename}">
    <table border="0" cellpadding="0" cellspacing="0" width="300" align="center">
      <tr>
        <td height="50">
