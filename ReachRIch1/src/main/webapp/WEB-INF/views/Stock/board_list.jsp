@@ -100,10 +100,11 @@
  	      <td width="15%" align="center" height="20"><font face="돋움" size="2">작성일</font></td>
  	      <td width="10%" align="center" height="20"><font face="돋움" size="2">조회수</font></td>
  	   </tr>
+	<c:set var="Bcnt" value="${totcount}"></c:set>
 	<c:forEach var="board" items="${list}">
 		<tr onMouseOver="style.backgroundColor='#D1EEEE'" onMouseOut="style.backgroundColor=''">
 			<td align="center" height="25">
-			<font face="돋움" size="2" color="#000000">${board.stock_idx}</font></td>
+			<font face="돋움" size="2" color="#000000">${Bcnt}</font></td>
 			<td align="left" height="20">&nbsp;
 				<font face="돋움" size="2" color="#000000">
 				<a class="list" href="board_hits?stock_idx=${board.stock_idx}">${board.subject}
@@ -113,6 +114,7 @@
 				<td align="center" height="20"><font face="돋움" size="2">${board.regdate}</font></td>
 				<td align="center" height="20"><font face="돋움" size="2">${board.readcnt}</font></td>
 		</tr>
+	<c:set var="Bcnt" value="${Bcnt-1}"></c:set>
 	</c:forEach>
 	<c:if test="${empty list}">
 		<tr onMouseOver="style.backgroundColor='#D1EEEE'" onMouseOut="style.backgroundColor=''">
