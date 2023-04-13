@@ -1,13 +1,16 @@
-package com.ReachRich.mapper;
+package com.ReachRich.service;
 
-import java.util.List; 
-
-import org.apache.ibatis.annotations.Mapper;
+import java.util.List;
 
 import com.ReachRich.domain.CommentDTO;
 
-@Mapper
-public interface CommentMapper {
+
+public interface CommentService {
+//	private static commentService CMservice;
+//	
+//	public static commentService getcommentService() {
+//		return CMservice;
+//	}
 	//댓글 가저오기
 	public List<CommentDTO> CMList(int stock_idx);
 	
@@ -25,6 +28,7 @@ public interface CommentMapper {
 	
 	//대댓글 불러오기
 	public List<CommentDTO> Listcom_CM(int stock_idx, int com_idx);
+	
 	//대댓글 불러오기
 	public List<CommentDTO> Listcom_CM1();
 }
