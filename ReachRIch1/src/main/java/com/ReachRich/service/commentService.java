@@ -1,4 +1,4 @@
-package com.ReachRich.service.CS;
+package com.ReachRich.service;
 
 import java.util.List;
 

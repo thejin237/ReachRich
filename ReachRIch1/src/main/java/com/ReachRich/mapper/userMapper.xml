@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.ReachRich.mapper.UM.userMapper">
+<mapper namespace="com.ReachRich.mapper.userMapper">
 	<!-- 아이디 체크 -->
 	<select id="userIdCheck" resultType="int">
 		select count(*) from tbl_user where user_id = #{user_id}

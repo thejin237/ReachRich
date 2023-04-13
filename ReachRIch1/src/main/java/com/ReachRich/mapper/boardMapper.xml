@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.ReachRich.mapper.BM.boardMapper">
+<mapper namespace="com.ReachRich.mapper.boardMapper">
 	<!-- 글 전체 개수 -->
 	<select id="boardCount" resultType="int">
 		select count(*) from tbl_board
@@ -37,7 +37,7 @@
 				select * from tbl_board where stock_sector like concat('%',#{key},'%')
 			</when>
 			<otherwise>			
-				select * from tbl_board			
+				select * from tbl_board order by regdate desc			
 			</otherwise>
 		</choose>
 	</select>
@@ -60,8 +60,8 @@
 	
 	<!-- 등록 -->
 	<insert id="boardWrite">
-		insert into tbl_board(stock_idx,stock_sector,stock_name, stock_number, user_name, content, imageName, fileName, subject, regdate, attachFile, imageFiles)
-			values(#{stock_idx}, #{stock_sector}, #{stock_name}, #{stock_number}, #{user_name}, #{content}, #{imageName}, #{fileName}, #{subject}, now(), #{attachFile}, #{imageFiles})
+		insert into tbl_board(stock_idx,stock_sector,stock_name, stock_number, user_name, content, imageName, fileName, subject, regdate)
+			values(#{stock_idx}, #{stock_sector}, #{stock_name}, #{stock_number}, #{user_name}, #{content}, #{imageName}, #{fileName}, #{subject}, now())
 	</insert>
 	
 	<!-- 수정 -->

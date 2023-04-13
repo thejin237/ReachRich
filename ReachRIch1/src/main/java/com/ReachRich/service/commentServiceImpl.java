@@ -1,4 +1,4 @@
-package com.ReachRich.service.CS;
+package com.ReachRich.service;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ReachRich.domain.commentDTO;
-import com.ReachRich.mapper.CM.commentMapper;
+import com.ReachRich.mapper.commentMapper;
 
 @Service
 public class commentServiceImpl implements commentService {

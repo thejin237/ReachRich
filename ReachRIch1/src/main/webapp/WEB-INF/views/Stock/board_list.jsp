@@ -48,10 +48,17 @@
 		<input type="hidden" name="subkey" value="">
 		<select name="key" onchange="change_list()">
 			<option value="">전체
-			<option value="정보" <c:if test="${key eq '정보'}"> selected </c:if>>정보
+			<option value="정보기술" <c:if test="${key eq '정보기술'}"> selected </c:if>>정보기술
+			<option value="헬스케어" <c:if test="${key eq '헬스케어'}"> selected </c:if>>헬스케어
+			<option value="임의소비재" <c:if test="${key eq '임의소비재'}"> selected </c:if>>임의소비재
 			<option value="금융" <c:if test="${key eq '금융'}"> selected </c:if>>금융
-			<option value="커뮤" <c:if test="${key eq '커뮤'}"> selected </c:if>>커뮤
-			<option value="w" <c:if test="${key eq 'w'}"> selected </c:if>>w
+			<option value="커뮤니케이션서비스" <c:if test="${key eq '커뮤니케이션서비스'}"> selected </c:if>>커뮤니케이션서비스
+			<option value="산업재" <c:if test="${key eq '산업재'}"> selected </c:if>>산업재
+			<option value="필수소비재" <c:if test="${key eq '필수소비재'}"> selected </c:if>>필수소비재
+			<option value="에너지" <c:if test="${key eq '에너지'}"> selected </c:if>>에너지
+			<option value="소재" <c:if test="${key eq '소재'}"> selected </c:if>>소재
+			<option value="유틸리티" <c:if test="${key eq '유틸리티'}"> selected </c:if>>유틸리티
+			<option value="부동산" <c:if test="${key eq '부동산'}"> selected </c:if>>부동산
 		</select>
 	</form>
 	<c:if test="${key eq '정보'}">

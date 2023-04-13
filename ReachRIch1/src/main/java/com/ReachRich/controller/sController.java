@@ -45,9 +45,9 @@ import com.ReachRich.domain.boardDTO;
 import com.ReachRich.domain.boardDTOFrom;
 import com.ReachRich.domain.commentDTO;
 import com.ReachRich.domain.userDTO;
-import com.ReachRich.service.BS.boardService;
-import com.ReachRich.service.CS.commentService;
-import com.ReachRich.service.US.userService;
+import com.ReachRich.service.boardService;
+import com.ReachRich.service.commentService;
+import com.ReachRich.service.userService;
 
 import lombok.extern.slf4j.Slf4j;
 

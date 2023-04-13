@@ -1,4 +1,4 @@
-package com.ReachRich.service.US;
+package com.ReachRich.service;
 
 import com.ReachRich.domain.userDTO;
 

@@ -45,9 +45,9 @@
 </head>
 <body>
  <h2></h2>
- <h2><%= cost %></h2>
+
  <h2><%= e12 %></h2>
- <h2>aaa</h2>
+ <h2>-------------</h2>
  <div align="center">
  <h2><%= kosDE %></h2>
  </div>

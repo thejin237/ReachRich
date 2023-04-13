@@ -1,29 +1,33 @@
-package com.ReachRich.service.BS;
+package com.ReachRich.mapper;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import org.apache.ibatis.annotations.Mapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.ReachRich.domain.boardDTO;
 
-public interface boardService {
-	//전체 글 수
+@Mapper
+public interface boardMapper {
+
+	//전체 게시글 카운트
 	public int boardCount();
-	//전체 idx 맥스값
+	
+	//전체 게시글 idx 맥스
 	public int boardIdx();
 	
 	//글전체 목록
 	public List<boardDTO> boardList();
 	
 	//조회수 증가
-	public void boardHits(int stock_idx, HttpServletRequest request, HttpServletResponse response);
+	public void boardHits(int stock_idx);
 	
 	//추천
-	public void sug(int stock_idx, HttpServletRequest request, HttpServletResponse response);
-	
+	public void sug(int stock_idx);
+
 	//특정글 검색(view, modify)
-	public boardDTO boardSelect(int idx);
+	public boardDTO boardSelect(int stock_idx);
 	
 	//특정글 분류(list, modify)
 	public List<boardDTO> boardListSelect(String key);
@@ -31,7 +35,7 @@ public interface boardService {
 	//특정글 분류 서브
 	public List<boardDTO> TestList2(String key, String subkey);
 	
-	//파일이름찾기
+	//파일이름 찾기
 	public boardDTO selectFlie(int stock_idx);
 	
 	//등록
@@ -45,4 +49,7 @@ public interface boardService {
 	//댓글 대댓글 삭제
 	public int boardComDel(boardDTO dto);
 	public int boardComComDel(boardDTO dto);
+
+	
+	
 }

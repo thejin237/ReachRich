@@ -1,4 +1,4 @@
-package com.ReachRich.service.BS;
+package com.ReachRich.service;
 
 import java.util.List;
 
@@ -12,8 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ReachRich.domain.boardDTO;
-import com.ReachRich.mapper.BM.boardMapper;
-import com.ReachRich.mapper.CM.commentMapper;
+import com.ReachRich.mapper.boardMapper;
+import com.ReachRich.mapper.commentMapper;
 
 @Service
 public class boardServiceImpl implements boardService {

@@ -1,4 +1,4 @@
-package com.ReachRich.mapper.CM;
+package com.ReachRich.mapper;
 
 import java.util.List;
 
