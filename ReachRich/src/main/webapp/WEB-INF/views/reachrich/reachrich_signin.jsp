@@ -356,7 +356,7 @@ select {
 		alert("검사시작");
 		var id= user.id.value;
 		$.ajax({
-			url:'/Reachrich/idCheck', //서블릿(컨트롤러) 이름
+			url:'/ReachRich/idCheck', //서블릿(컨트롤러) 이름
 			type:'post',
 			data:{'id':id},
 			success:function(result){//성공시

@@ -31,9 +31,9 @@ public class ReachRichController {
 	public void reachrichLogin() {
 		log.info("ReachRichLogin()..............");
 	}
-	@GetMapping("reachrich_singin")
-	public void reachrichSingin() {
-		log.info("ReachRichSingin()..............");
+	@GetMapping("reachrich_signin")
+	public void reachrichSignin() {
+		log.info("ReachRichSignin()..............");
 	}
 	@GetMapping("reachrich_board")
 	public void reachrichBoard() {

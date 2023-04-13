@@ -299,7 +299,7 @@ footer a {
         <h1>Hello, Friend!</h1>
         <p>회원이 아니면 이용에 제한이 있습니다.<br> 
         회원가입 후 무료로 이용하세요!!</p>
-        <a href="reachrich_singin"><button class="ghost" id="signUp">회원가입</button></a>
+        <a href="reachrich_signin"><button class="ghost" id="signUp">회원가입</button></a>
       </div>
     </div>
   </div>
