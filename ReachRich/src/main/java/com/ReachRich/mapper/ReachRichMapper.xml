@@ -9,4 +9,10 @@
 		insert into tbl_user(user_id, user_pass, user_name, user_birth, user_phone, user_email,user_gender, user_grade, user_wcnt, interest, joindate)
 		 values(#{user_id},#{user_pass},#{user_name},#{user_birth},#{user_phone},#{user_email},#{user_gender},#{user_grade},#{user_wcnt},#{interest},sysdate())
 	</insert>
+	<select id="login" resultType="String">
+		select user_pass from tbl_user where user_id = #{user_id}
+	</select>
+	<select id="loginselect" resultType="com.ReachRich.domain.UserDTO">
+		select * from tbl_user where user_id = #{user_id}
+	</select>
 </mapper>

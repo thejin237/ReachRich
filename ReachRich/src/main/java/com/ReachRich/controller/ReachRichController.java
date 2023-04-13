@@ -1,6 +1,7 @@
 package com.ReachRich.controller;
 
-import javax.servlet.http.HttpServletRequest;  
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,13 +32,21 @@ public class ReachRichController {
 	public void reachrichLogin() {
 		log.info("ReachRichLogin()..............");
 	}
-	@GetMapping("reachrich_singin")
+	@GetMapping("reachrich_signin")
 	public void reachrichSingin() {
-		log.info("ReachRichSingin()..............");
+		log.info("ReachRichSignin().............");
 	}
 	@GetMapping("reachrich_board")
 	public void reachrichBoard() {
 		log.info("ReachRichBoard()..............");
+	}
+	@GetMapping("reachrich_modify")
+	public void reachrichModify() {
+		log.info("ReachRichModify()...............");
+	}
+	@GetMapping("reachrich_profile")
+	public void reachrichProfile() {
+		log.info("ReachRichProfile()...............");
 	}
 	@GetMapping("em_check")
 	public void em_check(HttpServletRequest request, Model model){
@@ -56,14 +65,32 @@ public class ReachRichController {
 		}
 	}
 	@PostMapping("idCheck")
-	public @ResponseBody int idCheck(@RequestParam("id") String id){
+	public @ResponseBody int idCheck(@RequestParam("user_id") String user_id){
 		int result = 0;
-		if(id == "") {
+		if(user_id == "") {
 			result = -1;
 		}else {			
-			result = service.userIdCheck(id);
+			result = service.userIdCheck(user_id);
 		}
 		return result;
 	}
+	@PostMapping("login")
+	public String login(HttpSession session, HttpServletRequest request) {
+		
+		int row = service.login(request);
+		if(row == 1) {
+			UserDTO dto = service.loginselect(request);
+			session.setAttribute("user", dto);
+			return "redirect:/index";
+		}else {
+			return "";
+		}
+	}
+	@GetMapping("reachrich_logout")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "redirect:/index";
+	}
+
 
 }
