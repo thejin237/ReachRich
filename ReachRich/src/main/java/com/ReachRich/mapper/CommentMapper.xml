@@ -28,11 +28,7 @@
 			values(#{stock_idx}, #{com_idx}, #{com_com_idx}, #{user_id}, #{com_com_content}, now())
 	</insert>
 	
-		<!-- 대댓글 리스트 -->
-	<select id="Listcom_CM" resultType="com.ReachRich.domain.CommentDTO">
-		select * from tbl_com_comment where stock_idx=#{stock_idx} and com_idx=#{com_idx}
-	</select>
-	
+
 		<!-- 대댓글 리스트1 -->
 	<select id="Listcom_CM1" resultType="com.ReachRich.domain.CommentDTO">
 		select * from tbl_com_comment

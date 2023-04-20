@@ -360,7 +360,7 @@ select {
 		alert("검사시작");
 		var user_id= user.user_id.value;
 		$.ajax({
-			url:'/Reachrich/idCheck', //서블릿(컨트롤러) 이름
+			url:'/reachrich/idCheck', //서블릿(컨트롤러) 이름
 			type:'post',
 			data:{'user_id':user_id},
 			success:function(result){//성공시

@@ -20,7 +20,7 @@
 	<label for="modal-switch">
 		<span>모달 열고 닫기</span>
 			<%if(user==null){ %>
-			<a href="/reachrich/reachrich_login"><img src="img/login1.gif"></a>
+			<a href="/reachrich/reachrich_login"><img src="/img/login1.gif"></a>
 			<%}else{ %>
 			<a href="/reachrich/reachrich_logout">로그아웃</a>
 			<a href="/reachrich/reachrich_profile">회원정보</a>
@@ -47,7 +47,7 @@
         		</ul>
 			</li>
 			<li class="menu-item">
-				<a href="/reachrich/reachrich_board" class="menu-link">주식종목게시판</a>
+				<a href="/reachrich/reachrich_board_list" class="menu-link">주식종목게시판</a>
 				<ul class="submenu">
          			<li><a href="#">submenu01</a></li>
           			<li><a href="#">submenu02</a></li>

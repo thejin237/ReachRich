@@ -1,6 +1,6 @@
 package com.ReachRich.mapper;
 
-import org.apache.ibatis.annotations.Mapper; 
+import org.apache.ibatis.annotations.Mapper;  
 
 import com.ReachRich.domain.*;
 
