@@ -19,12 +19,18 @@
 	
 	<!-- 지정 대댓글의 댓글 수 -->
 	<select id="cntcom_CM" resultType="int">
-		select count(com_com_idx) from tbl_com_comment where com_idx=#{com_idx};
+		select count(com_com_idx) from tbl_com_comment where com_idx=#{com_idx} and stock_idx=#{stock_idx};
 	</select>
 	
 		<!-- 대댓글 달기 -->
 	<insert id="insertcom_CM">
-		insert into tbl_com_comment(stock_idx, com_idx, user_id, com_com_content, regdate)
-			values(#{stock_idx}, #{com_idx}, #{user_id}, #{com_com_content}, now())
+		insert into tbl_com_comment(stock_idx, com_idx, com_com_idx, user_id, com_com_content, regdate)
+			values(#{stock_idx}, #{com_idx}, #{com_com_idx}, #{user_id}, #{com_com_content}, now())
 	</insert>
+	
+
+		<!-- 대댓글 리스트1 -->
+	<select id="Listcom_CM1" resultType="com.ReachRich.domain.CommentDTO">
+		select * from tbl_com_comment
+	</select>
 </mapper>

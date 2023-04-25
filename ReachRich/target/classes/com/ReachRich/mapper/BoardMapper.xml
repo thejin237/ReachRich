@@ -5,7 +5,10 @@
 	<select id="boardCount" resultType="int">
 		select count(*) from tbl_board
 	</select>
-
+	<!-- idx 맥스값 -->
+	<select id="boardIdx" resultType="int">
+		select IFNULL(max(stock_idx), 0) from tbl_board
+	</select>
 	<!-- 전체 목록 -->
 	<select id="boardList" resultType="com.ReachRich.domain.BoardDTO">
 		select * from tbl_board order by regdate desc
@@ -21,6 +24,22 @@
 		update tbl_board set suggestion = suggestion+1 where stock_idx = #{stock_idx}
 	</update>
 	
+	<!-- 글 검색 -->
+	<select id="BoardListSearch" resultType="com.ReachRich.domain.BoardDTO" parameterType="com.ReachRich.domain.BoardDTO">
+		<choose>
+			<when test="type == 'subject'">
+				select * from tbl_board where subject like concat('%',#{key},'%') order by regdate desc
+			</when>
+			<when test="type == 'user_name'">
+				select * from tbl_board where user_name like concat('%',#{key},'%') order by regdate desc
+			</when>
+			<when test="type == 'content'">
+				select * from tbl_board where content like concat('%',#{key},'%') order by regdate desc
+			</when>
+
+		</choose>
+	</select>
+
 	<!-- 특정글 검색(view, modify) -->
 	<select id="boardSelect" resultType="com.ReachRich.domain.BoardDTO">
 		select * from tbl_board where stock_idx=#{stock_idx}
@@ -30,12 +49,17 @@
 	<select id="boardListSelect" resultType="com.ReachRich.domain.BoardDTO">
 		<choose>
 			<when test="key != ''">
-				select * from tbl_board where stock_sector like concat('%',#{key},'%')
+				select * from tbl_board where stock_sector like concat('%',#{key},'%') order by regdate desc
 			</when>
 			<otherwise>			
-				select * from tbl_board			
+				select * from tbl_board order by regdate desc			
 			</otherwise>
 		</choose>
+	</select>
+	
+	<!-- 파일이름찾기 -->
+	<select id="selectFlie" resultType="com.ReachRich.domain.BoardDTO">
+		select image from tbl_board where stock_idx = #{stock_idx}
 	</select>
 	
 	<select id="TestList2" resultType="com.ReachRich.domain.BoardDTO">
@@ -51,8 +75,8 @@
 	
 	<!-- 등록 -->
 	<insert id="boardWrite">
-		insert into tbl_board(stock_idxx,stock_sector,stock_name,suggestion,email,user_name,content,image,subject,contents)
-			values(tbl_board_seq_idx.nextval, #{stock_sector}, #{stock_name}, #{email},  #{pass}, #{subject}, #{contents})
+		insert into tbl_board(stock_idx,stock_sector,stock_name, stock_number, user_name, content, imageName, fileName, subject, regdate)
+			values(#{stock_idx}, #{stock_sector}, #{stock_name}, #{stock_number}, #{user_name}, #{content}, #{imageName}, #{fileName}, #{subject}, now())
 	</insert>
 	
 	<!-- 수정 -->
@@ -63,7 +87,19 @@
 	
 	<!-- 삭제 -->
 	<delete id="boardDelete">
-		delete from tbl_board where idx=#{idx} and pass=#{pass}
+		delete from tbl_board where stock_idx=#{stock_idx}
 	</delete>
+	<!-- 댓글 대댓글 삭제 -->
+	<delete id="boardComDel">
+		delete from tbl_comment where stock_idx=#{stock_idx}
+	</delete>
+	<delete id="boardComComDel">
+		delete from tbl_com_comment where stock_idx=#{stock_idx}
+	</delete>
+	
+	<!-- 파일이름찾기 -->
+	<select id="FileSelect" resultType="com.ReachRich.domain.BoardDTO">
+		SELECT hex(imageFiles) from tbl_board where stock_idx = #{stock_idx}
+	</select>
 	
 </mapper>

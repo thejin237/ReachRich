@@ -1,6 +1,6 @@
 package com.ReachRich.mapper;
 
-import java.util.List;
+import java.util.List;   
 
 import org.apache.ibatis.annotations.Mapper;
 
@@ -12,6 +12,9 @@ public interface BoardMapper {
 	//전체 게시글 카운트
 	public int boardCount();
 	
+	//전체 게시글 idx 맥스
+	public int boardIdx();
+	
 	//글전체 목록
 	public List<BoardDTO> boardList();
 	
@@ -20,7 +23,10 @@ public interface BoardMapper {
 	
 	//추천
 	public void sug(int stock_idx);
-
+	
+	//리스트에서 검색
+	public List<BoardDTO> BoardListSearch(BoardDTO dto);
+	
 	//특정글 검색(view, modify)
 	public BoardDTO boardSelect(int stock_idx);
 	
@@ -30,6 +36,9 @@ public interface BoardMapper {
 	//특정글 분류 서브
 	public List<BoardDTO> TestList2(String key, String subkey);
 	
+	//파일이름 찾기
+	public BoardDTO selectFlie(int stock_idx);
+	
 	//등록
 	public int boardWrite(BoardDTO dto);
 	
@@ -38,6 +47,11 @@ public interface BoardMapper {
 	
 	//삭제
 	public int boardDelete(BoardDTO dto);
+	//댓글 대댓글 삭제
+	public int boardComDel(BoardDTO dto);
+	
+	public int boardComComDel(BoardDTO dto);
+
 	
 	
 }

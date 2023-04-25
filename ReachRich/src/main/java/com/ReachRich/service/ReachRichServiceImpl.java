@@ -1,6 +1,6 @@
 package com.ReachRich.service;
 
-import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequest;   
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,5 +29,22 @@ public class ReachRichServiceImpl {
 		
 		return mapper.NewUser(dto);
 	}
+	public int login(HttpServletRequest request) {
+		String id=request.getParameter("user_id");
+		String passwd = mapper.login(id);
+		String pass=UserSHA256.getSHA256(request.getParameter("user_pass"));
+		int row = 0;
+		if(passwd.equals(pass)) {
+			row =1;
+		}
+		return row;
+	}
+	public UserDTO loginselect(HttpServletRequest request) {
+		String id=request.getParameter("user_id");
+		UserDTO dto = mapper.loginselect(id);
+		
+		return dto;
+	}
+
 	
 }

@@ -16,5 +16,4 @@ public class UserDTO {
 	private int user_wcnt = 0;
 	private String interest;
 	private String joindate;
-	
 }
