@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-public class indexController {
+public class IndexController {
 	
-	private static final Logger log = LoggerFactory.getLogger(indexController.class);
+	private static final Logger log = LoggerFactory.getLogger(IndexController.class);
 	
 	
 	@RequestMapping(value="/index")
