@@ -15,7 +15,7 @@
 	<aside class="secondary secondary-a"
 		style="width: 90%; margin-left: 10%;">
 		<ul class="info-list">
-			<li class="info-list-item">광고가 들어갈 자리</li>
+			<li class="info-list-item">광고가 들어갈 자리<span id="news">null</span></li>
 		</ul>
 		<ul class="user-list friend-list">
 			<li class="user-item friend-item">
@@ -25,5 +25,9 @@
 			</li>
 		</ul>
 	</aside>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+
+</script>
 </body>
 </html>

@@ -12,6 +12,8 @@
    String url2 = "https://www.google.com/search?q=%EB%82%98%EC%8A%A4%EB%8B%A5&oq=%EB%82%98%EC%8A%A4%EB%8B%A5&aqs=chrome.0.0i131i355i433i512j46i131i199i433i465i512j0i131i433i512l4j0i512j0i131i433i512j0i512l2.1619j0j7&sourceid=chrome&ie=UTF-8";
    Document doc2 = Jsoup.connect(url2).get();
    Elements e12 = doc2.getElementsByAttributeValue("class", "uch-psvg");
+   
+   
 %>
 <!DOCTYPE html>
 <html>
@@ -53,10 +55,10 @@
 						<span id="inr">null</span><br>
 						<span id="rub">null</span><br>
 						<span id="cad">null</span><br>
-						태국thb, 인도inr, 러시아rub, 캐나다cad
+						
 					</figure>
 					<div class="card-desc">
-
+						<div id="news">null</div><br>
 					</div>
 				</li>
 				<li class="card-item">
@@ -318,6 +320,87 @@ setInterval(function() {
 	    }
 	  });
 	}, 5000); // 5초마다 호출 (1000ms = 1초)
+	
+	setInterval(function() {
+	  $.ajax({
+	    url: "/THB",
+	    type: "get",
+	    contentType:"JSON",
+	    dataType: "text",
+	    success: function(data) {
+	    	//alert("성공?" + data);
+	      $("#thb").html(data);
+	    },
+	    error: function(error) {   
+	      alert("실패: " + JSON.stringify(error));
+	    }
+	  });
+	}, 5000); // 5초마다 호출 (1000ms = 1초)
+	
+	setInterval(function() {
+	  $.ajax({
+	    url: "/INR",
+	    type: "get",
+	    contentType:"JSON",
+	    dataType: "text",
+	    success: function(data) {
+	    	//alert("성공?" + data);
+	      $("#inr").html(data);
+	    },
+	    error: function(error) {   
+	      alert("실패: " + JSON.stringify(error));
+	    }
+	  });
+	}, 5000); // 5초마다 호출 (1000ms = 1초)
+	
+	setInterval(function() {
+	  $.ajax({
+	    url: "/RUB",
+	    type: "get",
+	    contentType:"JSON",
+	    dataType: "text",
+	    success: function(data) {
+	    	//alert("성공?" + data);
+	      $("#rub").html(data);
+	    },
+	    error: function(error) {   
+	      alert("실패: " + JSON.stringify(error));
+	    }
+	  });
+	}, 5000); // 5초마다 호출 (1000ms = 1초)
+	
+	setInterval(function() {
+	  $.ajax({
+	    url: "/CAD",
+	    type: "get",
+	    contentType:"JSON",
+	    dataType: "text",
+	    success: function(data) {
+	    	//alert("성공?" + data);
+	      $("#cad").html(data);
+	    },
+	    error: function(error) {   
+	      alert("실패: " + JSON.stringify(error));
+	    }
+	  });
+	}, 5000); // 5초마다 호출 (1000ms = 1초)
+
+	setInterval(function(){
+	  $.ajax({
+		    url: "/News",
+		    type: "get",
+		    contentType:"JSON",
+		    dataType: "text",
+		    success: function(data) {
+		    	//alert("성공?" + data);
+		      $("#news").html(data);
+		    },
+		    error: function(error) {   
+		      alert("실패: " + JSON.stringify(error));
+		    }
+		  });
+		}		
+	}, 5000);
 	
 function refreshImageChart() {
 	  var imgChartArea = document.getElementById("img_chart_area"); // img 요소를 가져옴

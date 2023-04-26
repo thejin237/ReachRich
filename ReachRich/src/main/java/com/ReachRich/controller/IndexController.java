@@ -274,4 +274,89 @@ public class IndexController {
 		}
 		return kospDE;
 	}
+	@GetMapping("THB")
+	public @ResponseBody String THB() {
+		String nasdack = "https://search.naver.com/search.naver?sm=tab_hty.top&where=nexearch&query=thb%ED%99%98%EC%9C%A8&oquery=%ED%83%9C%EA%B5%AD+%ED%99%98%EC%9C%A8&tqi=iZA2Qwp0Jy0sslruUAdssssstF8-477911";
+		//ResponseEntity<String> entity = null;
+		String kospDE = "";
+		Elements kosDE = null;
+		log.info("컨트롤러 시동1");
+		String entity ="";
+		try {
+			Document kospD = Jsoup.connect(nasdack).get();
+			kosDE = kospD.getElementsByAttributeValue("class", "rate_tlt");
+			kospDE = kosDE+"";
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return kospDE;
+	}
+	@GetMapping("INR")
+	public @ResponseBody String INR() {
+		String nasdack = "https://search.naver.com/search.naver?sm=tab_hty.top&where=nexearch&query=inr%ED%99%98%EC%9C%A8&oquery=thb%ED%99%98%EC%9C%A8&tqi=iZAIFwp0JywssdoRB7KssssssGl-242978";
+		//ResponseEntity<String> entity = null;
+		String kospDE = "";
+		Elements kosDE = null;
+		log.info("컨트롤러 시동1");
+		String entity ="";
+		try {
+			Document kospD = Jsoup.connect(nasdack).get();
+			kosDE = kospD.getElementsByAttributeValue("class", "rate_tlt");
+			kospDE = kosDE+"";
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return kospDE;
+	}
+	@GetMapping("RUB")
+	public @ResponseBody String RUB() {
+		String nasdack = "https://search.naver.com/search.naver?sm=tab_hty.top&where=nexearch&query=rub%ED%99%98%EC%9C%A8&oquery=cad%ED%99%98%EC%9C%A8&tqi=iZAJMsp0JywssdQ3SzVssssstes-368305";
+		//ResponseEntity<String> entity = null;
+		String kospDE = "";
+		Elements kosDE = null;
+		log.info("컨트롤러 시동1");
+		String entity ="";
+		try {
+			Document kospD = Jsoup.connect(nasdack).get();
+			kosDE = kospD.getElementsByAttributeValue("class", "rate_tlt");
+			kospDE = kosDE+"";
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return kospDE;
+	}
+	@GetMapping("CAD")
+	public @ResponseBody String CAD() {
+		String nasdack = "https://search.naver.com/search.naver?sm=tab_sug.ase&where=nexearch&query=cad%ED%99%98%EC%9C%A8&oquery=inr%ED%99%98%EC%9C%A8&tqi=iZAI2dp0YiRssQEajRlssssstNZ-071559&acq=cad%ED%99%98%EC%9C%A8&acr=1&qdt=0";
+		//ResponseEntity<String> entity = null;
+		String kospDE = "";
+		Elements kosDE = null;
+		log.info("컨트롤러 시동1");
+		String entity ="";
+		try {
+			Document kospD = Jsoup.connect(nasdack).get();
+			kosDE = kospD.getElementsByAttributeValue("class", "rate_tlt");
+			kospDE = kosDE+"";
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return kospDE;
+	}
+	@GetMapping("News")
+	public @ResponseBody Elements News() {
+		String nasdack = "https://news.naver.com/main/main.naver?mode=LSD&mid=shm&sid1=101";
+		//ResponseEntity<String> entity = null;
+		Elements kosDE = null;
+		String kospDE = "";
+		log.info("컨트롤러 시동1");
+		String entity ="";
+		try {
+			Document kospD = Jsoup.connect(nasdack).get();
+			kosDE = kospD.getElementsByAttributeValue("class", "aside");
+			kospDE = kosDE.select("section _officeTopRanking1087474").text();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return kosDE;
+	}
 }
