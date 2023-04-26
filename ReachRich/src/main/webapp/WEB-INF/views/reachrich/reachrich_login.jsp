@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -261,45 +261,41 @@ footer a {
 }
 </style>
 </head>
+<script>
+	function login_do(){
+		alert("로그인 시작")
+		if(login.user_id.value==""){
+			alert("아이디를 입력하세요")
+			login.ures_id.focus();
+			return;
+		}
+		if(login.user_pass.value==""){
+			alert("비밀번호를 입력하세요")
+			login.user_pass.focus();
+			return;
+		}
+		login.submit;
+	}
+</script>
 <body>
 <h2>ReachRich 로그인/회원가입</h2>
 <div class="container" id="container">
-  <div class="form-container sign-up-container">
-    <form action="#">
-      <h1>Create Account</h1>
-      <div class="social-container">
-        <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-        <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
-      </div>
-      <span>or use your email for registration</span>
-      <input type="text" placeholder="Name" />
-      <input type="email" placeholder="Email" />
-      <input type="password" placeholder="Password" />
-      <button>Sign Up</button>
-    </form>
-  </div>
   <div class="form-container sign-in-container">
-    <form action="#">
+    <form action="login" name="login" method="post">
       <h1>로그인</h1>
-      <input type="email" placeholder="Email" />
-      <input type="password" placeholder="Password" />
+      <input type="text" placeholder="ID" name="user_id" />
+      <input type="password" placeholder="Password" name="user_pass" />
       <a href="#">비밀번호를 잊으셨나요?</a>
-      <button>로그인</button>
+      <button onclick="login_do">로그인</button>
     </form>
   </div>
   <div class="overlay-container">
     <div class="overlay">
-      <div class="overlay-panel overlay-left">
-        <h1>Welcome Back!</h1>
-        <p>To keep connected with us please login with your personal info</p>
-        <button class="ghost" id="signIn">Sign In</button>
-      </div>
       <div class="overlay-panel overlay-right">
         <h1>Hello, Friend!</h1>
         <p>회원이 아니면 이용에 제한이 있습니다.<br> 
         회원가입 후 무료로 이용하세요!!</p>
-        <a href="reachrich_singin"><button class="ghost" id="signUp">회원가입</button></a>
+        <a href="reachrich_signin"><button class="ghost" id="signUp">회원가입</button></a>
       </div>
     </div>
   </div>

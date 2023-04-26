@@ -40,8 +40,8 @@
 					</div>
 				</li>
 				<li class="card-item">
-					<figure class="card-image" style="background-image: url(https://ssl.pstatic.net/imgfinance/chart/item/area/day/005930.png?sidcode=1678783237120)">
-						<img src="img/ilbuni.png" alt="일분이">
+					<figure class="card-image" style="background-image: url(https://ssl.pstatic.net/imgfinance/chart/item/area/day/005930.png?sidcode=1678783237120)" >
+						
 					</figure>
 					<div class="card-desc">
 						삼성전자

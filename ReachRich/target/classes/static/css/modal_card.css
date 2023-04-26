@@ -55,11 +55,16 @@ label[for="modal-switch"]:before {
 	background-color: lightgray;
 	background-repeat: no-repeat;
 	background-position: center;
-	background-size: cover;
+	background-size: contain;
 	border: 1px solid #bbb;
 }
 .card-image img{
 	display: none;
+}
+
+.card-image background-image{
+	width: auto;
+	height: auto;
 }
 .card-desc{
 	flex: 1 1 auto;

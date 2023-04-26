@@ -1,5 +1,5 @@
 package com.ReachRich.service;
 
-public interface noticeService {
+public interface NoticeService {
 
 }
