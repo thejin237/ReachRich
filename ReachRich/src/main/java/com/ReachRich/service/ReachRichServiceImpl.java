@@ -1,16 +1,22 @@
 package com.ReachRich.service;
 
-import javax.servlet.http.HttpServletRequest;   
+import javax.servlet.http.HttpServletRequest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ReachRich.mapper.ReachRichMapper;
 import com.ReachRich.util.UserSHA256;
+import com.ReachRich.controller.ReachRichController;
 import com.ReachRich.domain.*;
 
 @Service
 public class ReachRichServiceImpl {
+	private static final Logger log = 
+			LoggerFactory.getLogger(ReachRichServiceImpl.class);
+	
 	@Autowired
 	private ReachRichMapper mapper;
 	
@@ -44,6 +50,17 @@ public class ReachRichServiceImpl {
 		UserDTO dto = mapper.loginselect(id);
 		
 		return dto;
+	}
+	public int expassCheck(HttpServletRequest request) {
+		String id=request.getParameter("user_id");
+		String passwd = mapper.login(id);
+		log.info("왜 안돼.............");
+		String pass=UserSHA256.getSHA256(request.getParameter("existing_password"));
+		int row = 0;
+		if(passwd.equals(pass)) {
+			row =1;
+		}
+		return row;
 	}
 	
 }

@@ -27,6 +27,7 @@
 	color: white;
 	transition-duration: 0.5s;
 }
+
 .submenu {
   height: 0; /*ul의 높이를 안보이게 처리*/
   overflow: hidden;
@@ -38,8 +39,10 @@
 .submenu > li {
   line-height: 50px;
   background-color: red;
-
 }
+
+
+
 .menu > li:hover .submenu {
   height: 250px; /*서브메뉴 li한개의 높이 50*5*/
   transition-duration: 1s;

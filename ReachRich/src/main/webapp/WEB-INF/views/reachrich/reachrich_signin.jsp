@@ -190,7 +190,6 @@ select {
 </style>
     <meta charset="UTF-8">
     <title>네이버 : 회원가입</title>
-    <link rel="stylesheet" href="new_main.css">
  </head>
 <body>
 <form method="post" name="user" action="NewUser">
@@ -460,6 +459,7 @@ select {
     /*이벤트 핸들러 연결*/
 
     id.addEventListener("focusout", checkId);
+    expw.addEventListener("focusout", checkexPw);
     pw1.addEventListener("focusout", checkPw);
     pw2.addEventListener("focusout", comparePw);
     userName.addEventListener("focusout", checkName);
@@ -496,6 +496,24 @@ select {
             error[0].style.display = "block";
         }
     }
+    
+    function checkexPw() {
+    	
+    	  if(expw.value ==="") {
+    		  error[0].innerHTML = "필수 정보입니다.";
+              error[0].style.display = "block";
+              pwImg2.src = "/img/m_icon_check_enable.png";
+          } else if(expw.value !== user.getUser_pass) {
+              pwImg2.src = "/img/m_icon_check_disable.png";
+              error[2].innerHTML = "비밀번호가 일치하지 않습니다.";
+              error[2].style.display = "block";
+          } 
+
+          if(pw2.value === "") {
+              error[2].innerHTML = "필수 정보입니다.";
+              error[2].style.display = "block";
+          }
+	}
 
     function checkPw() {
         var pwPattern = /[a-zA-Z0-9~!@#$%^&*()_+|<>?:{}]{8,16}/;

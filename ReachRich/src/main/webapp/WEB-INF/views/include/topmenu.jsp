@@ -22,13 +22,12 @@
 			<%if(user==null){ %>
 			<a href="/reachrich/reachrich_login"><img src="/img/login1.gif"></a>
 			<%}else{ %>
-			<a href="/reachrich/reachrich_logout">로그아웃</a>
 			<a href="/reachrich/reachrich_profile">회원정보</a>
 			<%} %>
 	</label>
 	<div class="page">
 		<header class="header">
-			<h1 class="website-title">ReachRich</h1>
+			<a href="/index" style="color: black;"><h1 class="website-title">ReachRich</h1></a>
 			<form class="search-form"><!-- 서치 지정하는 곳 -->
 				<input type="search">
 				<input type="submit" value="찾기">
@@ -37,44 +36,28 @@
 
 		<ul class="menu">
 			<li class="menu-item">
-				<a href="/index" class="menu-link">Home</a>
-				<ul class="submenu">
-         			<li><a href="#">submenu01</a></li>
-          			<li><a href="#">submenu02</a></li>
-          			<li><a href="#">submenu03</a></li>
-          			<li><a href="#">submenu04</a></li>
-          			<li><a href="#">submenu05</a></li>
-        		</ul>
+				<%if(user==null){ %>
+				<a href="/reachrich/reachrich_login" class="menu-link">Login</a>
+				<%}else{ %>
+				<a href="/reachrich/reachrich_logout" class="menu-link">Logout</a>
+				<%} %>
 			</li>
 			<li class="menu-item">
 				<a href="/reachrich/reachrich_board_list" class="menu-link">주식종목게시판</a>
-				<ul class="submenu">
-         			<li><a href="#">submenu01</a></li>
-          			<li><a href="#">submenu02</a></li>
-          			<li><a href="#">submenu03</a></li>
-          			<li><a href="#">submenu04</a></li>
-          			<li><a href="#">submenu05</a></li>
-        		</ul>
 			</li>
 			<li class="menu-item">
-				<a href="#" class="menu-link">Product</a>
-				<ul class="submenu">
-         			<li><a href="#">submenu01</a></li>
-          			<li><a href="#">submenu02</a></li>
-          			<li><a href="#">submenu03</a></li>
-          			<li><a href="#">submenu04</a></li>
-          			<li><a href="#">submenu05</a></li>
-        		</ul>
+				<a href="/reachrich/reachrich_news" class="menu-link">News</a>
 			</li>
 			<li class="menu-item">
 				<a href="#" class="menu-link">Contants</a>
+				<!--  
 				<ul class="submenu">
          			<li><a href="#">submenu01</a></li>
           			<li><a href="#">submenu02</a></li>
           			<li><a href="#">submenu03</a></li>
           			<li><a href="#">submenu04</a></li>
           			<li><a href="#">submenu05</a></li>
-        		</ul>
+        		</ul>-->
 			</li>
 		</ul>
 	

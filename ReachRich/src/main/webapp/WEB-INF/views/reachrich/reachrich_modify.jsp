@@ -174,18 +174,21 @@ select {
 /* 버튼 */
 
 .btn_area {
+   	display : flex;
+	justify-content: space-evenly;
     margin: 30px 0 91px;
 }
 .btnJoin {
-    width: 100%;
-    padding: 21px 0 17px;
-    border: 0;
-    cursor: pointer;
-    color: #fff;
-    background-color: #08a600;
-    font-size: 20px;
-    font-weight: 400;
-    font-family: Dotum,'돋움',Helvetica,sans-serif;
+  border-radius: 20px;
+  border: 1px solid gold;
+  background-color: gold;
+  color: #FFFFFF;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 12px 45px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: transform 80ms ease-in;
 }
 </style>
     <meta charset="UTF-8">
@@ -205,19 +208,21 @@ select {
                 <!-- ID -->
                 <div>
                     <h3 class="join_title">
-                        <label for="id">아이디</label>
+                        <label for="id">아이디(아이디는 수정이 불가합니다.)</label>
                     </h3>
                     <span class="box int_id">
-                        <input type="text" id="id" class="int" maxlength="20" name="user_id">
-                        <span class="step_url"></span>
+                        <input type="text" id="id" class="int" maxlength="20" name="user_id" readonly="readonly" value="<%=user.getUser_id()%>">
                     </span>
-                    <span class="error_next_box"></span>
+                </div>
+                <!-- PW1 -->
+                <div>
+                	<h3 class="join_title">기존 비밀번호</h3>
+                	<input type="text" class="int" maxlength="20" name="existing_password">
                 </div>
                 <div>
-                <h3></h3>
-				<input type="button" value="중복검사" onclick="IDcheck()"> <font id="id_c" color="red">인증이 필요합니다</font>
-				</div>
-                <!-- PW1 -->
+  				<h3></h3>
+                  <input type="button" value="비밀번호 확인" onclick="expass()"> <font id="existingpassword" color="red">인증이 필요합니다</font>
+                </div>
                 <div>
                     <h3 class="join_title"><label for="pswd1">비밀번호</label></h3>
                     <span class="box int_pass">
@@ -342,7 +347,10 @@ select {
                 <!-- JOIN BTN-->
                 <div class="btn_area">
                     <button type="button" class="btnJoin" onclick="insert()">
-                        <span>가입하기</span>
+                        <span>수정하기</span>
+                    </button>
+                     <button type="button" class="btnJoin" onclick="javascript:history.back()">
+                        <span>뒤로가기</span>
                     </button>
                 </div>
 
@@ -356,41 +364,8 @@ select {
         <!-- wrapper -->
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
-    function IDcheck(){
-		alert("검사시작");
-		var user_id= user.user_id.value;
-		$.ajax({
-			url:'/Reachrich/idCheck', //서블릿(컨트롤러) 이름
-			type:'post',
-			data:{'user_id':user_id},
-			success:function(result){//성공시
-				if(result == 0){
-					id_c.value = 1;
-					id_c.innerHTML='사용가능한 아이디입니다';
-					user.pwsd1.focus();
-				}else if(result == 1){
-					id_c.value = 0;
-					id_c.innerHTML='중복된 아이디입니다';
-					user.user_id.value = "";
-					user.user_id.focus();
-				}else{
-					id_c.value = 0;
-					id_c.innerHTML='아이디를 작성해주세요';
-					user.user_id.focus();
-				}
-			},
-			error:function(error){//실패시
-				alert("error : " + error);
-			}
-		})
-	};
 	function insert(){
 		alert("등록시작");
-		if(user.user_id.value == ""){
-			alert("유저 아이디를 작성해주세요");
-			user.user_id.focus();
-			return;
-		}
 		if(user.user_pass.value == ""){
 			alert("비밀번호를 작성해주세요");
 			user.user_pass.focus();
@@ -415,11 +390,10 @@ select {
 			alert("관심종목 최소 1개이상 선택해주세요");
 			return;
 		}
-		/*if(document.getElementById("id_c").value != 1){
-			alert("유저아이디 중복확인이 필요합니다");
-			user.user_id.focus();
+		if(document.getElementById("existingpassword").value != 1){
+			alert("기존 비밀번호가 인증되지 않았습니다");
 			return;
-		}*/
+		}
 		if(document.getElementById("em_c").value != 1){
 			alert("이메일이 인증되지 않았습니다");
 			return;
@@ -432,6 +406,9 @@ select {
     /*변수 선언*/
 
     var user_id = document.querySelector('#id');
+    
+    var existing_password = document.querySelector('#Existing Password');
+    var expwImg1 = document.querySelector('#expswd_img');
 
     var user_pass = document.querySelector('#pswd1');
     var pwMsg = document.querySelector('#alertTxt');
@@ -627,6 +604,13 @@ select {
             error[7].style.display = "none";
         }
     }
+    function expass() {
+    	alert("비번 검색 시작");
+    	alert(user.user_id.value);
+    	alert(user.existing_password.value);
+		var url = "existing_password_check?existing_password=" + user.existing_password.value + "&user_id=" + user.user_id.value;
+		location.href=url;
+	}
     
     function chk_em(){
 		var url = "em_check?email=" + user.email.value;

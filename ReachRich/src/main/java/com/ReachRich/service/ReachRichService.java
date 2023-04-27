@@ -14,4 +14,5 @@ public interface ReachRichService {
 	
 	public UserDTO loginselect(HttpServletRequest request);
 	
+	public int expassCheck(HttpServletRequest request);
 }

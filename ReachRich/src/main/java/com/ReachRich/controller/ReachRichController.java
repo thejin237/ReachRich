@@ -38,6 +38,7 @@ import com.ReachRich.service.BoardServiceImpl;
 import com.ReachRich.service.CommentServiceImpl;
 import com.ReachRich.service.ReachRichServiceImpl;
 import com.ReachRich.util.GmailConfirm;
+import com.ReachRich.util.UserSHA256;
 import com.ReachRich.domain.*;
 
 
@@ -214,6 +215,15 @@ public class ReachRichController {
 		String authNum = gc.connectEmail(email);
 		model.addAttribute("authNum", authNum);
 	}
+	@PostMapping("existing_password_check")
+	public void existing_password_check(HttpServletRequest request, Model model,UserDTO dto) {
+	log.info(dto.getUser_id());
+	log.info(request.getParameter("user_id"));
+	log.info(request.getParameter("existing_password"));
+	int row = service.expassCheck(request);
+	
+	
+	}
 	@PostMapping("NewUser")
 	public String NewUserPro(UserDTO dto, HttpServletRequest request){
 		int row = service.NewUser(dto, request);
@@ -272,6 +282,11 @@ public class ReachRichController {
 		rttr.addFlashAttribute("row",row);
 		return "redirect:reachrich_board_list";
 	}
+	@GetMapping("reachrich_news")
+	public void reachrich_news() {
+		log.info("reachrich_new...........");
+	}
 
-
+/*------------------------------------------------------------------------------------------------*/
+	
 }
