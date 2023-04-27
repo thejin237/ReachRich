@@ -62,7 +62,6 @@
 				</li>
 				<li class="card-item">
 					<figure class="card-image" style="background-image: url(https://ssl.pstatic.net/imgfinance/chart/mobile/day/KOSPI_end.png?1682398860000)">
-						<img src="img/japan.gif" alt="일분이">
 					</figure>
 					<div class="card-desc">
 						코스피 <span id="kosp">null</span>
@@ -70,7 +69,6 @@
 				</li>
 				<li class="card-item">
 					<figure class="card-image" style="background-image: url(https://ssl.pstatic.net/imgfinance/chart/mobile/day/KOSDAQ_end.png?1682402820000)">
-						<img src="img/ilbuni.png" alt="일분이">
 					</figure>
 					<div class="card-desc">
 						코스닥 <span id="kosdack">null</span>
@@ -78,7 +76,6 @@
 				</li>
 				<li class="card-item">
 					<figure class="card-image" style="background-image: url(https://ssl.pstatic.net/imgfinance/chart/mobile/world/day/.IXIC_end.png?1682324159000)">
-						<img src="img/ilbuni.png" alt="일분이">
 					</figure>
 					<div class="card-desc">
 						나스닥 <span id="nasdack">null</span>
@@ -86,7 +83,6 @@
 				</li>
 				<li class="card-item">
 					<figure class="card-image" style="background-image: url(https://ssl.pstatic.net/imgfinance/chart/mobile/world/day/.N225_end.png?1682401623000)">
-						<img src="img/ilbuni.png" alt="일분이">
 					</figure>
 					<div class="card-desc">
 						니케이 <span id="nk">null</span>
