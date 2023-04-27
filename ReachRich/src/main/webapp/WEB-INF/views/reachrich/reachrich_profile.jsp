@@ -169,7 +169,11 @@ select {
     <link rel="stylesheet" href="new_main.css">
  </head>
 <body>
+<<<<<<< HEAD
 <form name="profile" action="modify" method="get">
+=======
+<form name="profile" action="reachrich_modify" method="get">
+>>>>>>> 7aa8e1e77a8fd0a175f2d20331be999a84bc503b
   <!-- header -->
         <div id="header">
             <h1>회원정보</h1>
@@ -191,7 +195,11 @@ select {
                 <div>
                     <h3 class="join_title">이름</h3>
                     <span class="box int_name">
+<<<<<<< HEAD
                         <%= user.getUser_id() %> 
+=======
+                        <%= user.getUser_name() %> 
+>>>>>>> 7aa8e1e77a8fd0a175f2d20331be999a84bc503b
                     </span>
                 </div>
 
@@ -202,16 +210,36 @@ select {
                         <!-- BIRTH_YY -->
                         <div id="bir_yy">
                             <span class="box">
+<<<<<<< HEAD
                                 <%= user.getUser_id() %> 
+=======
+                                <%= user.getUser_birth().substring(0,4) %>년 <%= user.getUser_birth().substring(4,6) %>월 <%= user.getUser_birth().substring(6,8) %>일
+>>>>>>> 7aa8e1e77a8fd0a175f2d20331be999a84bc503b
                             </span>
                         </div>
                     </div>
                 </div>
                 <!-- GENDER -->
           		<div>
+<<<<<<< HEAD
                     <h3 class="join_title">휴대전화</h3>
                     <span class="box int_mobile">
                         <%= user.getUser_id() %> 
+=======
+                    <h3 class="join_title">성별</h3>
+                    <span class="box int_mobile">
+                    <%
+                    if(user.getUser_gender().equals("M")){
+                    %>
+                    남성
+                    <%
+                    }else{
+                    %>
+                    여성
+                    <%
+                    }
+                    %>
+>>>>>>> 7aa8e1e77a8fd0a175f2d20331be999a84bc503b
                     </span>  
                 </div>    
 
@@ -219,20 +247,32 @@ select {
                 <div>
                     <h3 class="join_title">이메일</h3>
                     <span class="box int_email">
+<<<<<<< HEAD
                        <%= user.getUser_id() %> 
+=======
+                       <%= user.getUser_email() %> 
+>>>>>>> 7aa8e1e77a8fd0a175f2d20331be999a84bc503b
                     </span> 
                 </div>
                 <!-- MOBILE -->
                 <div>
                     <h3 class="join_title">휴대전화</h3>
                     <span class="box int_mobile">
+<<<<<<< HEAD
                         <%= user.getUser_id() %> 
+=======
+                        <%= user.getUser_phone().substring(0,3) %>-<%= user.getUser_phone().substring(3,7) %>-<%= user.getUser_phone().substring(7,11) %>  
+>>>>>>> 7aa8e1e77a8fd0a175f2d20331be999a84bc503b
                     </span>  
                 </div>
                  <div>
                     <h3 class="join_title">관심종목</h3>
                     <span class="box int_mobile">
+<<<<<<< HEAD
                         <%= user.getUser_id() %> 
+=======
+                        <%= user.getInterest() %> 
+>>>>>>> 7aa8e1e77a8fd0a175f2d20331be999a84bc503b
                     </span>  
                 </div>         
                 <!-- JOIN BTN-->
@@ -240,7 +280,11 @@ select {
                     <button type="button" class="btnJoin" onclick="javascript:history.back()">
                         <span>뒤로가기</span>
                     </button>
+<<<<<<< HEAD
                     <button type="button" class="btnJoin" onclick="modify()">
+=======
+                    <button type="button" class="btnJoin" onclick="profile.submit()">
+>>>>>>> 7aa8e1e77a8fd0a175f2d20331be999a84bc503b
                         <span>수정하기</span>
                     </button>
                 </div>

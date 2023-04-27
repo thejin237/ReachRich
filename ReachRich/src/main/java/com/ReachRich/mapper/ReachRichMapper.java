@@ -14,4 +14,8 @@ public interface ReachRichMapper {
 	public String login(String id);
 	
 	public UserDTO loginselect(String id);
+<<<<<<< HEAD
+=======
+	
+>>>>>>> 7aa8e1e77a8fd0a175f2d20331be999a84bc503b
 }	
