@@ -382,22 +382,6 @@ setInterval(function() {
 	    }
 	  });
 	}, 5000); // 5초마다 호출 (1000ms = 1초)
-	setInterval(function(){
-	  $.ajax({
-		    url: "/News",
-		    type: "get",
-		    contentType:"JSON",
-		    dataType: "text",
-		    success: function(data) {
-		    	//alert("성공?" + data);
-		      $("#news").html(data);
-		    },
-		    error: function(error) {   
-		      alert("실패: " + JSON.stringify(error));
-		    }
-		  });
-		}		
-	}, 5000);
 	
 function refreshImageChart() {
 	  var imgChartArea = document.getElementById("img_chart_area"); // img 요소를 가져옴
