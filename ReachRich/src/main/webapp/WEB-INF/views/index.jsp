@@ -62,7 +62,6 @@
 				</li>
 				<li class="card-item">
 					<figure class="card-image" style="background-image: url(https://ssl.pstatic.net/imgfinance/chart/mobile/day/KOSPI_end.png?1682398860000)">
-						<img src="img/japan.gif" alt="일분이">
 					</figure>
 					<div class="card-desc">
 						코스피 <span id="kosp">null</span>
@@ -70,7 +69,6 @@
 				</li>
 				<li class="card-item">
 					<figure class="card-image" style="background-image: url(https://ssl.pstatic.net/imgfinance/chart/mobile/day/KOSDAQ_end.png?1682402820000)">
-						<img src="img/ilbuni.png" alt="일분이">
 					</figure>
 					<div class="card-desc">
 						코스닥 <span id="kosdack">null</span>
@@ -78,7 +76,6 @@
 				</li>
 				<li class="card-item">
 					<figure class="card-image" style="background-image: url(https://ssl.pstatic.net/imgfinance/chart/mobile/world/day/.IXIC_end.png?1682324159000)">
-						<img src="img/ilbuni.png" alt="일분이">
 					</figure>
 					<div class="card-desc">
 						나스닥 <span id="nasdack">null</span>
@@ -86,7 +83,6 @@
 				</li>
 				<li class="card-item">
 					<figure class="card-image" style="background-image: url(https://ssl.pstatic.net/imgfinance/chart/mobile/world/day/.N225_end.png?1682401623000)">
-						<img src="img/ilbuni.png" alt="일분이">
 					</figure>
 					<div class="card-desc">
 						니케이 <span id="nk">null</span>
@@ -382,22 +378,6 @@ setInterval(function() {
 	    }
 	  });
 	}, 5000); // 5초마다 호출 (1000ms = 1초)
-	setInterval(function(){
-	  $.ajax({
-		    url: "/News",
-		    type: "get",
-		    contentType:"JSON",
-		    dataType: "text",
-		    success: function(data) {
-		    	//alert("성공?" + data);
-		      $("#news").html(data);
-		    },
-		    error: function(error) {   
-		      alert("실패: " + JSON.stringify(error));
-		    }
-		  });
-		}		
-	}, 5000);
 	
 function refreshImageChart() {
 	  var imgChartArea = document.getElementById("img_chart_area"); // img 요소를 가져옴

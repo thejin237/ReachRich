@@ -1,6 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import = "java.io.*,org.jsoup.*,org.jsoup.nodes.*,org.jsoup.select.*" %>
+<%
+	String url2 = "https://news.naver.com/main/main.naver?mode=LSD&mid=shm&sid1=101";
+	Document doc2 = Jsoup.connect(url2).get();
+	Elements elm = doc2.getElementsByAttributeValue("class", "cluster_item");
+	Elements elm0 = elm.eq(0);
+	Elements elm1 = elm.eq(1);
+	Elements elm2 = elm.eq(2);
+	Elements elm3 = elm.eq(3);
+	Elements elm4 = elm.eq(4);
+	Elements elm5 = elm.eq(5);
+	Elements elmHead = doc2.getElementsByAttributeValue("class", "cluster_head_topic");
+	String elmHead0 = elmHead.eq(0).text();
+	String elmHead1 = elmHead.eq(1).text();
+	String elmHead2 = elmHead.eq(2).text();
+	String elmHead3 = elmHead.eq(3).text();
+	String elmHead4 = elmHead.eq(4).text();
+	String elmHead5 = elmHead.eq(5).text();
+	//Elements elmHead5 = elmHead.eq(5);
+%>
 
 <!DOCTYPE html>
 <html>
@@ -21,45 +40,54 @@
 		<section class="primary">
 			<ul class="card-list">
 				<li class="card-item">
-					<figure class="card-image" style="background-image: url(img/ilbuni.png)">
-						<img src="img/ilbuni.png" alt="일분이">
-					</figure>
 					<div class="card-desc">
-						뉴스페이지
+						<%= elmHead0 %>
 					</div>
+					<figure class="">
+						<%= elm0 %>
+					</figure>
 				</li>
 				<li class="card-item">
-					<figure class="card-image" style="background-image: url(https://ssl.pstatic.net/imgfinance/chart/item/area/day/005930.png?sidcode=1678783237120)" >
-						
-					</figure>
 					<div class="card-desc">
-						삼성전자
+						<%= elmHead1 %>
 					</div>
+					<figure class="">
+						<%= elm1 %>
+					</figure>
 				</li>
 				<li class="card-item">
-					<figure class="card-image" style="background-image: url(img/japan.gif)">
-						<img src="img/japan.gif" alt="일분이">
-					</figure>
 					<div class="card-desc">
-						삼성전자
+						<%= elmHead2 %>
 					</div>
+					<figure class="">
+						<%= elm2 %>
+					</figure>
 				</li>
 				<li class="card-item">
-					<figure class="card-image" style="background-image: url(img/ilbuni.png)">
-						<img src="img/ilbuni.png" alt="일분이">
-					</figure>
 					<div class="card-desc">
-						메인4가 들어갑니다. 게시판 자리
+						<%= elmHead3 %>
 					</div>
+					<figure class="">
+						<%= elm3 %>
+					</figure>
 				</li>
 				<li class="card-item">
-					<figure class="card-image" style="background-image: url(img/ilbuni.png)">
-						<img src="img/ilbuni.png" alt="일분이">
-					</figure>
 					<div class="card-desc">
-						메인5가 들어갑니다. 추천종목/핫 종목
+						<%= elmHead4 %>
 					</div>
+					<figure class="">
+						<%= elm4 %>
+					</figure>
 				</li>
+				<li class="card-item">
+					<div class="card-desc">
+						<%= elmHead5 %>
+					</div>
+					<figure class="">
+						<%= elm5 %>
+					</figure>
+				</li>
+				
 			</ul>
 		</section>
 <%@ include file="../include/rightbanner.jsp" %>

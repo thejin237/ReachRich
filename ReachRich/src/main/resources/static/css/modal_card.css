@@ -67,10 +67,14 @@ label[for="modal-switch"]:before {
 	height: auto;
 }
 .card-desc{
-	flex: 1 1 auto;
+	width:700;
+	height:100;
+	font-size: 1.1em;
+	/* flex: 1 1 auto;*/
 	padding: 1em;
 	background: white;
 	text-align: center;
+	border: 1px solid #bbb;
 }
 @media(min-width: 600px){
 	.card-list{
