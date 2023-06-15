@@ -76,20 +76,51 @@ public class ReachRichController {
 		model.addAttribute("list", BoardService.boardList());
 	}
 	@PostMapping("reachrich_board_list")
-	public void reachrichBoardList(Model model, @RequestParam("key") String key, @RequestParam("subkey") String subkey) {
+	public void reachrichBoardList(Model model, BoardDTO dto) {
 		List<BoardDTO> list = null;
-		if(key == "" && subkey == "") {
-			list = BoardService.boardListSelect(key);
-			key = null;
-		}else if(subkey == "") {
-			list = BoardService.boardListSelect(key);
-		}else {			
-			list = BoardService.TestList2(key, subkey);
+		if(dto.getType()==null) {
+			if(dto.getKey() == "" && dto.getSubkey() == "") {
+				list = BoardService.boardListSelect(dto.getKey());
+				dto.setKey(null);
+				}else if(dto.getSubkey() == "") {
+					list = BoardService.boardListSelect(dto.getKey());
+					int totcount = 0;
+					for(int i=0; i<list.size(); i++) {
+						totcount += 1; 
+					}
+					model.addAttribute("totcount", totcount);	
+					
+				}else {			
+					list = BoardService.TestList2(dto.getKey(), dto.getSubkey());
+					int totcount = 0;
+					for(int i=0; i<list.size(); i++) {
+						totcount += 1; 
+					}
+					model.addAttribute("totcount", totcount);	
+					
+				}
+		int totcount = 0;
+		for(int i=0; i<list.size(); i++) {
+			totcount += 1; 
 		}
-
-		model.addAttribute("key", key);
-		model.addAttribute("subkey", subkey);
+		model.addAttribute("totcount", totcount);	
+		model.addAttribute("key", dto.getKey());
+		model.addAttribute("subkey", dto.getSubkey());
 		model.addAttribute("list", list);
+		
+			}else {
+		log.info("Board_list Search.........");
+		log.info("타입 : "+dto.getType());
+		log.info("키 : "+dto.getKey());
+		int totcount = 0;
+		for(int i=0; i<BoardService.BoardListSearch(dto).size(); i++) {
+			totcount += 1; 
+		}
+		model.addAttribute("totcount", totcount);
+		model.addAttribute("list", BoardService.BoardListSearch(dto));
+		model.addAttribute("type", dto.getType());
+		model.addAttribute("key", dto.getKey());
+		}
 	}
 	@GetMapping("reachrich_board_hits")
 	public String ReachRichBoardHits(@RequestParam("stock_idx") int stock_idx, HttpServletRequest request, HttpServletResponse response) {

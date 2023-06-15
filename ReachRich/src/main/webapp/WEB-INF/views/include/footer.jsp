@@ -13,7 +13,7 @@
 </head>
 <body>
 	<footer class="footer"> 
-	여기는 footer 입니다.Lorem ipsum dolor sitamet consectetur.
+	Copyright @ ReachRich All rights reserved
 	</footer>
 </body>
 </html>

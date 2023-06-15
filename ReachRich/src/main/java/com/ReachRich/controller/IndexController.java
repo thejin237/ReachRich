@@ -37,7 +37,7 @@ public class IndexController {
 //	        	log.info("배열 : "+no_exday[i]);
 //	        }
 	        log.info("스판 : "+e12345.select("span"));
-	        entity = e1234.select("span").get(0).text()+" "+e12345.select("span").get(1)+" "+e12345.select("span").get(2)+" "+e12345.select("span").get(9)+e12345.select("span").get(10)+e12345.select("span").get(15);
+	        entity = e1234.select("span").get(0).text()+" "+e12345.select("span").get(1)+" "+e12345.select("span").get(2)+" "+e12345.select("span").get(9)+e12345.select("span").get(10)+e12345.select("span").get(14);
 	        //entity += e1234.select("no_exday").get(0).text();
 	        //entity = e1234.get(0).text();
 	        //entity = new ResponseEntity<String>( e1234.select("span").get(0).text(),HttpStatus.OK);

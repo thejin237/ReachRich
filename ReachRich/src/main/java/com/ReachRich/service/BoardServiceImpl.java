@@ -103,6 +103,14 @@ public class BoardServiceImpl implements BoardService {
 	}
 	
 	@Override
+	public List<BoardDTO> BoardListSearch(BoardDTO dto) {
+		log.info("BoardListSearch()....");
+		log.info("Service search....." + dto.getType() + " / " + dto.getKey());
+		return mapper.BoardListSearch(dto);
+		
+	}
+	
+	@Override
 	public BoardDTO boardSelect(int idx) {
 		log.info("BoardSelect()....");
 		return mapper.boardSelect(idx);

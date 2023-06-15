@@ -24,6 +24,23 @@
 		update tbl_board set suggestion = suggestion+1 where stock_idx = #{stock_idx}
 	</update>
 	
+	<!-- 글 검색 -->
+	<select id="BoardListSearch" resultType="com.ReachRich.domain.BoardDTO" parameterType="com.ReachRich.domain.BoardDTO">
+		<choose>
+			<when test="type == 'subject'">
+				select * from tbl_board where subject like concat('%',#{key},'%') order by regdate desc
+			</when>
+			<when test="type == 'user_name'">
+				select * from tbl_board where user_name like concat('%',#{key},'%') order by regdate desc
+			</when>
+			<when test="type == 'content'">
+				select * from tbl_board where content like concat('%',#{key},'%') order by regdate desc
+			</when>
+
+		</choose>
+	</select>
+	
+	
 	<!-- 특정글 검색(view, modify) -->
 	<select id="boardSelect" resultType="com.ReachRich.domain.BoardDTO">
 		select * from tbl_board where stock_idx=#{stock_idx}

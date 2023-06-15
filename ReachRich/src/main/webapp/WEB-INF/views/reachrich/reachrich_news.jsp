@@ -40,7 +40,7 @@
 		<section class="primary">
 			<ul class="card-list">
 				<li class="card-item">
-					<div class="card-desc">
+					<div class="card-desc-news">
 						<%= elmHead0 %>
 					</div>
 					<figure class="">
@@ -48,7 +48,7 @@
 					</figure>
 				</li>
 				<li class="card-item">
-					<div class="card-desc">
+					<div class="card-desc-news">
 						<%= elmHead1 %>
 					</div>
 					<figure class="">
@@ -56,7 +56,7 @@
 					</figure>
 				</li>
 				<li class="card-item">
-					<div class="card-desc">
+					<div class="card-desc-news">
 						<%= elmHead2 %>
 					</div>
 					<figure class="">
@@ -64,7 +64,7 @@
 					</figure>
 				</li>
 				<li class="card-item">
-					<div class="card-desc">
+					<div class="card-desc-news">
 						<%= elmHead3 %>
 					</div>
 					<figure class="">
@@ -72,7 +72,7 @@
 					</figure>
 				</li>
 				<li class="card-item">
-					<div class="card-desc">
+					<div class="card-desc-news">
 						<%= elmHead4 %>
 					</div>
 					<figure class="">
@@ -80,7 +80,7 @@
 					</figure>
 				</li>
 				<li class="card-item">
-					<div class="card-desc">
+					<div class="card-desc-news">
 						<%= elmHead5 %>
 					</div>
 					<figure class="">

@@ -35,6 +35,15 @@
 			location.href="reachrich_board_write";
 		}
 	}
+	function Find(){
+		alert("검색시도");
+		if(search.key.value == ""){
+			alert("검색할 내용을 작성해주세요");
+			search.key.focus();
+			return;
+		}
+		search.submit();
+	}
 </script>
 <body>
 <%@ include file="../include/topmenu.jsp" %>
@@ -108,7 +117,7 @@
 			<td align="center" >
 			<font color="#000000">${Bcnt}</font></td>
 			<td align="left">&nbsp;
-				<a class="list" href="reachrich_board_hits?stock_idx=${board.stock_idx}">${board.subject}
+				<a class="list" style="font-size: 15px;" href="reachrich_board_hits?stock_idx=${board.stock_idx}">${board.subject}
 				<c:if test="${board.maxcnt!=0}">(${board.maxcnt})</c:if></a></td>
 					<td align="center"><font face="돋움" size="2">
 					<a class="list" href="mailto:ein1027@nate.com">${board.user_name}</a></font></td>
@@ -136,7 +145,7 @@
 			<td width="25%"> &nbsp;</td>
 			<td width="50%" align="center">
 				<table>
-					<form>
+					<form name="search" method="post" action="reachrich_board_list">
 						<tr>
 							<td>
 								<select name="type">

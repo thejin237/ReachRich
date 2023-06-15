@@ -22,7 +22,7 @@ label[for="modal-switch"] > span {
 label[for="modal-switch"] {
 	position: absolute;
 	right: 1rem;
-	top: 1.3rem;
+	top: 0.9rem;
 }
 label[for="modal-switch"]:before {
 	content: url("img/login1.gif");
@@ -56,12 +56,9 @@ label[for="modal-switch"]:before {
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: contain;
+	font-size : 0.7em;
 	border: 1px solid #bbb;
 }
-.card-image img{
-	display: none;
-}
-
 .card-image background-image{
 	width: auto;
 	height: auto;
@@ -69,12 +66,31 @@ label[for="modal-switch"]:before {
 .card-desc{
 	width:700;
 	height:100;
-	font-size: 1.1em;
 	/* flex: 1 1 auto;*/
 	padding: 1em;
 	background: white;
 	text-align: center;
 	border: 1px solid #bbb;
+	font-size: 0.8em;
+	
+}
+.card-desc-news{
+	width:700;
+	height: 70px;
+	/* flex: 1 1 auto;*/
+	padding: 1em;
+	background: white;
+	text-align: center;
+	border: 1px solid #bbb;
+	font-size: 1em;
+	font-weight : 900;
+	resize: none;
+	
+}
+
+.card-desc span{
+	text-decoration: none;
+	color: black;
 }
 @media(min-width: 600px){
 	.card-list{

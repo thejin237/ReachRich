@@ -25,4 +25,7 @@ public class BoardDTO {
 	private UploadFile attachFile;          // 첨부 파일
 	private List<UploadFile> imageFiles;    // 첨부 이미지
 
+	private String type;
+	private String key;
+	private String subkey;
 }

@@ -23,6 +23,9 @@ public interface BoardMapper {
 	
 	//추천
 	public void sug(int stock_idx);
+	
+	//리스트에서 검색
+	public List<BoardDTO> BoardListSearch(BoardDTO dto);
 
 	//특정글 검색(view, modify)
 	public BoardDTO boardSelect(int stock_idx);

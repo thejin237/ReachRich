@@ -34,58 +34,58 @@
 			<ul class="card-list">
 				<li class="card-item">
 					<figure class="card-image" style="background-image: url()">
-						<span id="jpy"></span><br>
-						<span id="usd">null</span><br>
-						<span id="cny">null</span><br>
-						<span id="gbp">null</span><br>
-						<span id="eur">null</span><br>
-						<span id="chf">null</span><br>
-						<span id="hkd">null</span><br>
+						<span id="jpy">Loading</span><br>
+						<span id="usd">Loading</span><br>
+						<span id="cny">Loading</span><br>
+						<span id="gbp">Loading</span><br>
+						<span id="eur">Loading</span><br>
+						<span id="chf">Loading</span><br>
+						<span id="hkd">Loading</span><br>
 					</figure>
 					<div class="card-desc">
-						메인1이 들어갑니다. 환율자리
+						<h3 style="color: black;" >당일환률</h3>
 					</div>
 				</li>
 				<li class="card-item">
 					<figure class="card-image" style="background-image: url()" >
-						<span id="aud">null</span><br>
-						<span id="sgd">null</span><br>
-						<span id="thb">null</span><br>
-						<span id="inr">null</span><br>
-						<span id="rub">null</span><br>
-						<span id="cad">null</span><br>
+						<span id="aud">Loading</span><br>
+						<span id="sgd">Loading</span><br>
+						<span id="thb">Loading</span><br>
+						<span id="inr">Loading</span><br>
+						<span id="rub">Loading</span><br>
+						<span id="cad">Loading</span><br>
 						
 					</figure>
 					<div class="card-desc">
-						<div id="news">null</div><br>
+						<h3 style="color: black;" >당일환률</h3>
 					</div>
 				</li>
 				<li class="card-item">
 					<figure class="card-image" style="background-image: url(https://ssl.pstatic.net/imgfinance/chart/mobile/day/KOSPI_end.png?1682398860000)">
 					</figure>
 					<div class="card-desc">
-						코스피 <span id="kosp">null</span>
+						<!-- 코스피 --> <span id="kosp">Loading</span>
 					</div>
 				</li>
 				<li class="card-item">
 					<figure class="card-image" style="background-image: url(https://ssl.pstatic.net/imgfinance/chart/mobile/day/KOSDAQ_end.png?1682402820000)">
 					</figure>
 					<div class="card-desc">
-						코스닥 <span id="kosdack">null</span>
+						<!-- 코스닥 --> <span id="kosdack">Loading</span>
 					</div>
 				</li>
 				<li class="card-item">
 					<figure class="card-image" style="background-image: url(https://ssl.pstatic.net/imgfinance/chart/mobile/world/day/.IXIC_end.png?1682324159000)">
 					</figure>
 					<div class="card-desc">
-						나스닥 <span id="nasdack">null</span>
+						<!-- 나스닥 --> <span id="nasdack">Loading</span>
 					</div>
 				</li>
 				<li class="card-item">
 					<figure class="card-image" style="background-image: url(https://ssl.pstatic.net/imgfinance/chart/mobile/world/day/.N225_end.png?1682401623000)">
 					</figure>
 					<div class="card-desc">
-						니케이 <span id="nk">null</span>
+						<!-- 니케이 --> <span id="nk" >Loading</span>
 					</div>
 				</li>
 			</ul>

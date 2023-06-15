@@ -22,7 +22,7 @@
 			<%if(user==null){ %>
 			<a href="/reachrich/reachrich_login"><img src="/img/login1.gif"></a>
 			<%}else{ %>
-			<a href="/reachrich/reachrich_profile">회원정보</a>
+			<a href="/reachrich/reachrich_profile"><img src="/img/Profile.png" style="height: 50px;,width: 50px;" ></a>
 			<%} %>
 	</label>
 	<div class="page">
